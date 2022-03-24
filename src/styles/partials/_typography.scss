@@ -1,0 +1,47 @@
+//FONT FACES
+@font-face {
+  font-family: inconsolata;
+  src: url("../../assets/fonts/inconsolata/inconsolata-light.ttf");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: inconsolata;
+  src: url("../../assets/fonts/inconsolata/inconsolata-regular.ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: inconsolata;
+  src: url("../../assets/fonts/inconsolata/inconsolata-medium.ttf");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: inconsolata;
+  src: url("../../assets/fonts/inconsolata/inconsolata-bold.ttf");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: bungee;
+  src: url("../../assets/fonts/bungee/bungee-regular.ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: press start;
+  src: url("../../assets/fonts/press-start/press-start.ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+
+a:link,
+a:visited {
+  text-decoration: none;
+}
