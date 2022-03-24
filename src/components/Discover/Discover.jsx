@@ -51,7 +51,7 @@ export default class Discover extends Component {
   //EVENT HANDLER FOR RESTART BUTTON
   onRestart = () => {
     this.setState(initialState);
-    this.updateStateData();
+    this.getStateData();
   };
 
   //EVENT HANDLER FOR USER INPUT CHANGE
@@ -60,7 +60,6 @@ export default class Discover extends Component {
     const value = event.target.value;
     this.setTime();
     this.getAnotherSummary(value);
-    // this.onFinish(value);
     this.setState({ userInput: value, chars: this.countCorrectChars(value) });
   };
 
@@ -82,7 +81,7 @@ export default class Discover extends Component {
     }
   };
 
-  //CHECK IF USER HAS FINISHED TYPING
+  // CHECK IF USER HAS FINISHED TYPING
   // onFinish = () => {
   //   if (this.state.secs === 60) {
   //     clearInterval(this.interval);
@@ -101,12 +100,17 @@ export default class Discover extends Component {
   };
 
   render() {
-    // this.onFinish();
+
     return (
       <>
         <Header />
         <Animation />
-        <Metrics secs={this.state.secs} chars={this.state.chars} />
+        <Metrics
+          secs={this.state.secs}
+          chars={this.state.chars}
+          userInput={this.state.userInput}
+          handleTimer={this.handleTimer}
+        />
         <section className="game">
           <Preview text={this.state.text} userInput={this.state.userInput} />
           <textarea
