@@ -16,6 +16,7 @@ const initialState = {
   secs: 0,
   started: false,
   finished: false,
+  wpm: 0,
 };
 
 export default class Discover extends Component {
@@ -63,13 +64,25 @@ export default class Discover extends Component {
     this.setState({ userInput: value, chars: this.countCorrectChars(value) });
   };
 
+  //COLLECT WPM VALUE
+  // onUpdate = (event) => {
+  //   const wpmValue = event.target.value;
+  //   console.log("wpm", wpmValue);
+  //   this.setState({ wpm: wpmValue });
+  // };
+
   //START TIME COUNTER
   setTime = () => {
     if (!this.state.started) {
       this.setState({ started: true });
       this.interval = setInterval(() => {
         this.setState((prevProps) => {
-          return { secs: prevProps.secs + 1 };
+          if (this.state.secs === 60) {
+            clearInterval(this.interval);
+            return { finished: true };
+          } else if (this.state.secs >= 0) {
+            return { secs: prevProps.secs + 1 };
+          }
         });
       }, 1000);
     }
@@ -83,10 +96,10 @@ export default class Discover extends Component {
 
   // CHECK IF USER HAS FINISHED TYPING
   // onFinish = () => {
-  //   if (this.state.secs === 60) {
+  //   if (this.state.secs === 10) {
   //     clearInterval(this.interval);
-  //     this.setState({ finished: true });
-  //     alert("finished typing!");
+  //     this.setState({ secs: 60 });
+  //     // alert("finished typing!");
   //   }
   // };
 
@@ -100,7 +113,6 @@ export default class Discover extends Component {
   };
 
   render() {
-
     return (
       <>
         <Header />
@@ -109,7 +121,8 @@ export default class Discover extends Component {
           secs={this.state.secs}
           chars={this.state.chars}
           userInput={this.state.userInput}
-          handleTimer={this.handleTimer}
+          handleWPM={this.handleWPM}
+          // handleTimer={this.handleTimer}
         />
         <section className="game">
           <Preview text={this.state.text} userInput={this.state.userInput} />

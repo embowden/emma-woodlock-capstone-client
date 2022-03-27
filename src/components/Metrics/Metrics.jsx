@@ -1,7 +1,7 @@
 import React from "react";
 import "./metrics.scss";
 
-const Metrics = ({ secs, chars, userInput }) => {
+const Metrics = ({ secs, chars, userInput, handleWPM }) => {
   let wpm = () => {
     if (chars !== 0 && secs !== 0) {
       return chars / 5 / (secs / 60);
