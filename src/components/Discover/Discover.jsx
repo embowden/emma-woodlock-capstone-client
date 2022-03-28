@@ -34,10 +34,9 @@ export default class Discover extends Component {
   //GET RANDOM SUMMARY
   getStateData = async () => {
     try {
-      const response = await axios.post(
-        "http://localhost:8080/mdn/summary/id",
-        { id: this.state.id }
-      );
+      const response = await axios.post("http://localhost:8080/mdn/summary", {
+        id: this.state.id,
+      });
       this.setState({
         text: response.data.summary,
         id: [response.data.id],
@@ -51,10 +50,9 @@ export default class Discover extends Component {
   //GET ANOTHER SUMMARY AND CONCATENATE
   getMoreStateData = async () => {
     try {
-      const response = await axios.post(
-        "http://localhost:8080/mdn/summary/id",
-        { id: this.state.id }
-      );
+      const response = await axios.post("http://localhost:8080/mdn/summary", {
+        id: this.state.id,
+      });
       this.state.id.push(response.data.id);
       this.setState({
         text: this.state.text + " " + response.data.summary,
