@@ -3,11 +3,8 @@ import axios from "axios";
 import Header from "../Header/Header";
 import Animation from "../Animation/Animation";
 import Metrics from "../Metrics/Metrics";
-// import Game from "../Game/Game";
-// import Play from "../Play/Play";
+import Game from "../Game/Game";
 import "./discover.scss";
-//IMPORTS FOR GAME
-import Preview from "../Preview/Preview";
 
 const initialState = {
   id: [],
@@ -31,7 +28,7 @@ export default class Discover extends Component {
 
   componentDidUpdate() {}
 
-  //GET RANDOM SUMMARY
+  //GET INITIAL RANDOM SUMMARY
   getStateData = async () => {
     try {
       const response = await axios.post("http://localhost:8080/mdn/summary", {
@@ -47,7 +44,7 @@ export default class Discover extends Component {
     }
   };
 
-  //GET ANOTHER SUMMARY AND CONCATENATE
+  //GET ANOTHER RANDOM SUMMARY AND CONCATENATE
   getMoreStateData = async () => {
     try {
       const response = await axios.post("http://localhost:8080/mdn/summary", {
@@ -152,18 +149,17 @@ export default class Discover extends Component {
           wpm={this.state.wpm}
           accuracy={this.state.accuracy}
         />
-        <section className="game">
-          <Preview text={this.state.text} userInput={this.state.userInput} />
-          <textarea
-            value={this.state.userInput}
-            onChange={this.onUserInputChange}
-            placeholder="Start typing..."
-            readOnly={this.state.finished}
-          ></textarea>
-          <button onClick={this.onRestart}>Restart</button>
-        </section>
-        {/* <Game />
-        <Play /> */}
+        <Game
+          text={this.state.text}
+          userInput={this.state.userInput}
+          value={this.state.userInput}
+          onChange={this.onUserInputChange}
+          readOnly={this.state.finished}
+          onClick={this.onRestart}
+          ids={this.state.id}
+          finished={this.state.finished}
+          started={this.state.started}
+        />
       </>
     );
   }
