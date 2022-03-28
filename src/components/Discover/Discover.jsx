@@ -3,20 +3,22 @@ import axios from "axios";
 import Header from "../Header/Header";
 import Animation from "../Animation/Animation";
 import Metrics from "../Metrics/Metrics";
-import Game from "../Game/Game";
-import Play from "../Play/Play";
+// import Game from "../Game/Game";
+// import Play from "../Play/Play";
 import "./discover.scss";
 //IMPORTS FOR GAME
 import Preview from "../Preview/Preview";
 
 const initialState = {
-  text: "Test",
+  id: [],
+  text: "",
   userInput: "",
   chars: 0,
   secs: 0,
   started: false,
   finished: false,
   wpm: 0,
+  accuracy: 0,
 };
 
 export default class Discover extends Component {
@@ -32,8 +34,15 @@ export default class Discover extends Component {
   //GET RANDOM SUMMARY
   getStateData = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/mdn/summary");
-      this.setState({ text: response.data });
+      const response = await axios.post(
+        "http://localhost:8080/mdn/summary/id",
+        { id: this.state.id }
+      );
+      this.setState({
+        text: response.data.summary,
+        id: [response.data.id],
+      });
+      console.log(this.state.id, "id");
     } catch (err) {
       console.log(`ERROR: ${err}`);
     }
@@ -42,8 +51,16 @@ export default class Discover extends Component {
   //GET ANOTHER SUMMARY AND CONCATENATE
   getMoreStateData = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/mdn/summary");
-      this.setState({ text: this.state.text + " " + response.data });
+      const response = await axios.post(
+        "http://localhost:8080/mdn/summary/id",
+        { id: this.state.id }
+      );
+      this.state.id.push(response.data.id);
+      this.setState({
+        text: this.state.text + " " + response.data.summary,
+        id: this.state.id,
+      });
+      console.log(this.state.id);
     } catch (err) {
       console.log(`ERROR: ${err}`);
     }
@@ -61,15 +78,33 @@ export default class Discover extends Component {
     const value = event.target.value;
     this.setTime();
     this.getAnotherSummary(value);
-    this.setState({ userInput: value, chars: this.countCorrectChars(value) });
+    this.setState({
+      userInput: value,
+      chars: this.countCorrectChars(value),
+    });
   };
 
-  //COLLECT WPM VALUE
-  // onUpdate = (event) => {
-  //   const wpmValue = event.target.value;
-  //   console.log("wpm", wpmValue);
-  //   this.setState({ wpm: wpmValue });
-  // };
+  //CALCULATE WPM
+  calculateWPM = () => {
+    let value = 0;
+    if (this.state.chars !== 0 && this.state.secs !== 0) {
+      value = this.state.chars / 5 / (this.state.secs / 60);
+      return value;
+    }
+    value = 0;
+    return value;
+  };
+
+  //CALCULATE ACCURACY
+  calculateAccuracy = () => {
+    let acc = 0;
+    if (this.state.chars !== 0 && this.state.userInput.length !== 0) {
+      acc = (this.state.chars / this.state.userInput.length) * 100;
+      return acc;
+    }
+    acc = 0;
+    return acc;
+  };
 
   //START TIME COUNTER
   setTime = () => {
@@ -79,29 +114,26 @@ export default class Discover extends Component {
         this.setState((prevProps) => {
           if (this.state.secs === 60) {
             clearInterval(this.interval);
-            return { finished: true };
+            // alert(`Your WPM is ${this.state.wpm}, your accuracy is ${this.state.accuracy}%`)
+            return { finished: true, secs: prevProps.secs };
           } else if (this.state.secs >= 0) {
-            return { secs: prevProps.secs + 1 };
+            return {
+              secs: prevProps.secs + 1,
+              wpm: this.calculateWPM(),
+              accuracy: this.calculateAccuracy(),
+            };
           }
         });
       }, 1000);
     }
   };
 
+  //GRAB ANOTHER SUMMARY FROM SERVER
   getAnotherSummary = (userInput) => {
     if (userInput.length === this.state.text.length) {
       this.getMoreStateData();
     }
   };
-
-  // CHECK IF USER HAS FINISHED TYPING
-  // onFinish = () => {
-  //   if (this.state.secs === 10) {
-  //     clearInterval(this.interval);
-  //     this.setState({ secs: 60 });
-  //     // alert("finished typing!");
-  //   }
-  // };
 
   //COUNT CORRECT CHARACTERS TYPED (W/O WHITE SPACES)
   countCorrectChars = (userInput) => {
@@ -119,10 +151,8 @@ export default class Discover extends Component {
         <Animation />
         <Metrics
           secs={this.state.secs}
-          chars={this.state.chars}
-          userInput={this.state.userInput}
-          handleWPM={this.handleWPM}
-          // handleTimer={this.handleTimer}
+          wpm={this.state.wpm}
+          accuracy={this.state.accuracy}
         />
         <section className="game">
           <Preview text={this.state.text} userInput={this.state.userInput} />
