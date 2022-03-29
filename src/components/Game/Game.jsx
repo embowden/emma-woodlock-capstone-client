@@ -14,6 +14,19 @@ const Game = ({
   finished,
   started,
 }) => {
+  let showButton = true;
+  if (started) {
+    showButton = false;
+  } else if (!started && finished) {
+    showButton = false;
+  }
+
+  let restartButton = true;
+  if (!started && finished) {
+    restartButton = true;
+  } else if (!started) {
+    restartButton = false;
+  }
 
   return (
     <>
@@ -29,11 +42,12 @@ const Game = ({
         ) : (
           <Links mode={"discover"} ids={ids} />
         )}
-        {!started ? (
-          <button disabled>Start typing to begin the game!</button>
-        ) : (
-          <button onClick={onClick}>Restart!</button>
-        )}
+        {showButton ? (
+          <button className="game__disabled">
+            Start typing to begin the game!
+          </button>
+        ) : null}
+        {restartButton ? <button onClick={onClick}>Restart!</button> : null}
       </section>
     </>
   );

@@ -1,3 +1,7 @@
 .game {
-    border: 3px solid blue;
+  border: 3px solid blue;
+
+  &__disabled {
+    pointer-events: none;
+  }
 }

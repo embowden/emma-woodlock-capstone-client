@@ -5,6 +5,17 @@ const Resources = () => {
   return (
     <section>
       <div>https://www.youtube.com/watch?v=2VGUGpZFY5s</div>
+      <div>
+        <a href="https://www.freepik.com/vectors/alien-planet">
+          Alien planet vector created by upklyak - www.freepik.com
+        </a>
+      </div>
+      <div>
+        <a href="https://www.freepik.com/vectors/meteor-shower">
+          Meteor shower vector created by vectorpouch - www.freepik.com
+        </a>
+      </div>
+      <p>https://www.npmjs.com/package/lottie-react</p>
     </section>
   );
 };

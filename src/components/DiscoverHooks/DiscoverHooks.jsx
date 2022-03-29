@@ -1,5 +1,5 @@
 // import React, { Component } from "react";
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Header from "../Header/Header";
 import Animation from "../Animation/Animation";
@@ -14,31 +14,76 @@ const DiscoverHooks = () => {
   const [secs, setSecs] = useState(0);
   const [started, setStarted] = useState(false);
   const [finished, setFinished] = useState(false);
+  const [gameWon, setGameWon] = useState(false);
   const [wpm, setWpm] = useState(0);
   const [accuracy, setAccuracy] = useState(0);
+  const [gameMode, setGameMode] = useState(40);
 
+  //USE EFFECT TO COLLECT INITIAL DATA
   useEffect(() => {
     getStateData();
   }, []);
 
-  //CANT GET THIS BULLSHIT TO FKIN WORK
-  //WILL NOT STOP BLOODY TICKING
-
+  //USE EFFECT TO START TIMER
   useEffect(() => {
     let interval = null;
     if (started) {
+      setWpm(calculateWPM());
+      setAccuracy(calculateAccuracy());
       interval = setInterval(() => {
         setSecs((secs) => secs + 1);
       }, 1000);
-    } else if (secs == 10) {
-      alert("is this fkin working?");
-    } else if (!started && secs !== 0) {
-      clearInterval(interval);
+      // console.log(started);
+      if (secs === 60) {
+        clearInterval(interval);
+        alert(
+          "Oh no! You ran out of oxygen! The spaceship has left without you!"
+        );
+      }
     }
     return () => {
       clearInterval(interval);
     };
   }, [started, secs]);
+
+  //USE EFFECT TO UPDATE STATE WHEN TIMER STOPS
+  useEffect(() => {
+    // console.log("is this working");
+    if (secs === 60) {
+      setStarted(false);
+      setFinished(true);
+    }
+  }, [secs]);
+
+  //USE EFFECT TO UPDATE GAME MODE
+  useEffect(() => {
+    console.log(gameMode);
+    // console.log(finished);
+  }, [gameMode]);
+
+  //USE EFFECT TO TRACK IF GAME IS WON
+  useEffect(() => {
+    if ((gameMode === 40) & (chars === 200)) {
+      winningReset();
+      alert("You got to the spaceship in time!");
+    } else if ((gameMode === 60) & (chars === 300)) {
+      winningReset();
+      alert("You got to the spaceship in time!");
+    } else if ((gameMode === 80) & (chars === 400)) {
+      winningReset();
+      alert("You got to the spaceship in time!");
+    } else if ((gameMode === 100) & (chars === 500)) {
+      winningReset();
+      alert("You got to the spaceship in time!");
+    }
+  }, [gameMode, chars]);
+
+  //FUNCTION TO SET STATES IF WON BEFORE TIMER
+  const winningReset = () => {
+    setStarted(false);
+    setFinished(true);
+    setGameWon(true);
+  };
 
   //GET INITIAL RANDOM SUMMARY
   const getStateData = async () => {
@@ -76,10 +121,12 @@ const DiscoverHooks = () => {
     setUserInput("");
     setChars(0);
     setSecs(0);
+    setGameWon(false);
     setStarted(false);
     setFinished(false);
     setWpm(0);
     setAccuracy(0);
+    setGameMode(40);
     getStateData();
   };
 
@@ -87,9 +134,7 @@ const DiscoverHooks = () => {
   //START COUNTING SECONDS WHEN USER STARTS
   const onUserInputChange = (event) => {
     const value = event.target.value;
-    // setTime();
     setStarted(true);
-    // toggleStarted();
     getAnotherSummary(value);
     setUserInput(value);
     setChars(countCorrectChars(value));
@@ -117,44 +162,6 @@ const DiscoverHooks = () => {
     return acc;
   };
 
-  //START TIME COUNTER
-  const oldTime = () => {
-    if (!started) {
-      this.setState({ started: true });
-      this.interval = setInterval(() => {
-        this.setState((prevProps) => {
-          if (this.state.secs === 60) {
-            clearInterval(this.interval);
-            return { finished: true, secs: prevProps.secs };
-          } else if (this.state.secs >= 0) {
-            return {
-              secs: prevProps.secs + 1,
-              wpm: this.calculateWPM(),
-              accuracy: this.calculateAccuracy(),
-            };
-          }
-        });
-      }, 1000);
-    }
-  };
-
-  //   const setTime = () => {
-  //     if (!started) {
-  //       setStarted(true);
-  //       const interval = setInterval(() => {
-  //         setSecs(() => {
-  //           if (secs === 60) {
-  //             clearInterval(interval);
-  //             return prevTime;
-  //           } else if (secs >= 0) {
-  //             console.log(prevTime + 1);
-  //             return prevTime + 1;
-  //           }
-  //         });
-  //       }, 1000);
-  //     }
-  //   };
-
   //GRAB ANOTHER SUMMARY FROM SERVER
   const getAnotherSummary = (userInput) => {
     if (userInput.length === text.length) {
@@ -171,11 +178,27 @@ const DiscoverHooks = () => {
       .filter((char, index) => char === data[index]).length;
   };
 
+  // EVENT HANDLER TO GET GAME MODE INFORMATION
+  const onUserSelect = (event) => {
+    setGameMode(parseInt(event.target.value));
+  };
+
   return (
     <>
       <Header />
-      <Animation />
-      <Metrics secs={secs} wpm={wpm} accuracy={accuracy} />
+      <Animation
+        characters={chars}
+        gameMode={gameMode}
+        gameWon={gameWon}
+        finished={finished}
+      />
+      <Metrics
+        secs={secs}
+        wpm={wpm}
+        accuracy={accuracy}
+        onUserSelect={onUserSelect}
+        characters={chars}
+      />
       <Game
         text={text}
         userInput={userInput}
