@@ -2,8 +2,7 @@ import "./App.scss";
 import { Route, Switch, Redirect } from "react-router-dom";
 import Nav from "./components/Navigation/Nav";
 import Intro from "./components/Intro/Intro";
-// import Discover from "./components/Discover/Discover";
-import DiscoverHooks from "./components/DiscoverHooks/DiscoverHooks";
+import Discover from "./components/Discover/Discover";
 import Develop from "./components/Develop/Develop";
 import User from "./components/User/User";
 import Code from "./components/Code/Code";
@@ -23,7 +22,7 @@ function App() {
           />
           <Route
             path="/discover"
-            render={(routerProps) => <DiscoverHooks {...routerProps} />}
+            render={(routerProps) => <Discover {...routerProps} />}
           />
           <Route
             path="/develop"

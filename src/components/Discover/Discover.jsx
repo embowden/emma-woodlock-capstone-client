@@ -1,89 +1,151 @@
-import React, { Component } from "react";
+// import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Header from "../Header/Header";
 import Animation from "../Animation/Animation";
 import Metrics from "../Metrics/Metrics";
 import Game from "../Game/Game";
-import "./discover.scss";
+// import "./discover.scss";
 
-const initialState = {
-  id: [],
-  text: "",
-  userInput: "",
-  chars: 0,
-  secs: 0,
-  started: false,
-  finished: false,
-  wpm: 0,
-  accuracy: 0,
-};
+const DiscoverHooks = () => {
+  const [id, setId] = useState([]);
+  const [text, setText] = useState("");
+  const [userInput, setUserInput] = useState("");
+  const [chars, setChars] = useState(0);
+  const [secs, setSecs] = useState(0);
+  const [started, setStarted] = useState(false);
+  const [finished, setFinished] = useState(false);
+  const [gameWon, setGameWon] = useState(false);
+  const [wpm, setWpm] = useState(0);
+  const [accuracy, setAccuracy] = useState(0);
+  const [gameMode, setGameMode] = useState(40);
 
-export default class Discover extends Component {
-  state = initialState;
+  //USE EFFECT TO COLLECT INITIAL DATA
+  useEffect(() => {
+    getStateData();
+  }, []);
 
-  componentDidMount() {
-    console.log("mounted!");
-    this.getStateData();
-  }
+  //USE EFFECT TO START TIMER
+  useEffect(() => {
+    let interval = null;
+    if (started) {
+      setWpm(calculateWPM());
+      setAccuracy(calculateAccuracy());
+      interval = setInterval(() => {
+        setSecs((secs) => secs + 1);
+      }, 1000);
+      // console.log(started);
+      if (secs === 60) {
+        clearInterval(interval);
+        alert(
+          "Oh no! You ran out of oxygen! The spaceship has left without you!"
+        );
+      }
+    }
+    return () => {
+      clearInterval(interval);
+    };
+  }, [started, secs]);
 
-  componentDidUpdate() {}
+  //USE EFFECT TO UPDATE STATE WHEN TIMER STOPS
+  useEffect(() => {
+    // console.log("is this working");
+    if (secs === 60) {
+      setStarted(false);
+      setFinished(true);
+    }
+  }, [secs]);
+
+  //USE EFFECT TO UPDATE GAME MODE
+  useEffect(() => {
+    console.log(gameMode);
+    // console.log(finished);
+  }, [gameMode]);
+
+  //USE EFFECT TO TRACK IF GAME IS WON
+  useEffect(() => {
+    if ((gameMode === 40) & (chars === 200)) {
+      winningReset();
+      alert("You got to the spaceship in time!");
+    } else if ((gameMode === 60) & (chars === 300)) {
+      winningReset();
+      alert("You got to the spaceship in time!");
+    } else if ((gameMode === 80) & (chars === 400)) {
+      winningReset();
+      alert("You got to the spaceship in time!");
+    } else if ((gameMode === 100) & (chars === 500)) {
+      winningReset();
+      alert("You got to the spaceship in time!");
+    }
+  }, [gameMode, chars]);
+
+  //FUNCTION TO SET STATES IF WON BEFORE TIMER
+  const winningReset = () => {
+    setStarted(false);
+    setFinished(true);
+    setGameWon(true);
+  };
 
   //GET INITIAL RANDOM SUMMARY
-  getStateData = async () => {
+  const getStateData = async () => {
     try {
       const response = await axios.post("http://localhost:8080/mdn/summary", {
-        id: this.state.id,
+        id: id,
       });
-      this.setState({
-        text: response.data.summary,
-        id: [response.data.id],
-      });
-      console.log(this.state.id, "id");
+      setText(response.data.summary);
+      setId([response.data.id]);
+      console.log(id, "id");
     } catch (err) {
       console.log(`ERROR: ${err}`);
     }
   };
 
   //GET ANOTHER RANDOM SUMMARY AND CONCATENATE
-  getMoreStateData = async () => {
+  const getMoreStateData = async () => {
     try {
       const response = await axios.post("http://localhost:8080/mdn/summary", {
-        id: this.state.id,
+        id: id,
       });
-      this.state.id.push(response.data.id);
-      this.setState({
-        text: this.state.text + " " + response.data.summary,
-        id: this.state.id,
-      });
-      console.log(this.state.id);
+      id.push(response.data.id);
+      setText(text + " " + response.data.summary);
+      setId(id);
+      console.log(id);
     } catch (err) {
       console.log(`ERROR: ${err}`);
     }
   };
 
   //EVENT HANDLER FOR RESTART BUTTON
-  onRestart = () => {
-    this.setState(initialState);
-    this.getStateData();
+  const onRestart = () => {
+    setId([]);
+    setText("");
+    setUserInput("");
+    setChars(0);
+    setSecs(0);
+    setGameWon(false);
+    setStarted(false);
+    setFinished(false);
+    setWpm(0);
+    setAccuracy(0);
+    setGameMode(40);
+    getStateData();
   };
 
   //EVENT HANDLER FOR USER INPUT CHANGE
   //START COUNTING SECONDS WHEN USER STARTS
-  onUserInputChange = (event) => {
+  const onUserInputChange = (event) => {
     const value = event.target.value;
-    this.setTime();
-    this.getAnotherSummary(value);
-    this.setState({
-      userInput: value,
-      chars: this.countCorrectChars(value),
-    });
+    setStarted(true);
+    getAnotherSummary(value);
+    setUserInput(value);
+    setChars(countCorrectChars(value));
   };
 
   //CALCULATE WPM
-  calculateWPM = () => {
+  const calculateWPM = () => {
     let value = 0;
-    if (this.state.chars !== 0 && this.state.secs !== 0) {
-      value = this.state.chars / 5 / (this.state.secs / 60);
+    if (chars !== 0 && secs !== 0) {
+      value = chars / 5 / (secs / 60);
       return value;
     }
     value = 0;
@@ -91,76 +153,66 @@ export default class Discover extends Component {
   };
 
   //CALCULATE ACCURACY
-  calculateAccuracy = () => {
+  const calculateAccuracy = () => {
     let acc = 0;
-    if (this.state.chars !== 0 && this.state.userInput.length !== 0) {
-      acc = (this.state.chars / this.state.userInput.length) * 100;
+    if (chars !== 0 && userInput.length !== 0) {
+      acc = (chars / userInput.length) * 100;
       return acc;
     }
     acc = 0;
     return acc;
   };
 
-  //START TIME COUNTER
-  setTime = () => {
-    if (!this.state.started) {
-      this.setState({ started: true });
-      this.interval = setInterval(() => {
-        this.setState((prevProps) => {
-          if (this.state.secs === 60) {
-            clearInterval(this.interval);
-            // alert(`Your WPM is ${this.state.wpm}, your accuracy is ${this.state.accuracy}%`)
-            return { finished: true, secs: prevProps.secs };
-          } else if (this.state.secs >= 0) {
-            return {
-              secs: prevProps.secs + 1,
-              wpm: this.calculateWPM(),
-              accuracy: this.calculateAccuracy(),
-            };
-          }
-        });
-      }, 1000);
-    }
-  };
-
   //GRAB ANOTHER SUMMARY FROM SERVER
-  getAnotherSummary = (userInput) => {
-    if (userInput.length === this.state.text.length) {
-      this.getMoreStateData();
+  const getAnotherSummary = (userInput) => {
+    if (userInput.length === text.length) {
+      getMoreStateData();
     }
   };
 
   //COUNT CORRECT CHARACTERS TYPED (W/O WHITE SPACES)
-  countCorrectChars = (userInput) => {
-    const text = this.state.text.replace(" ", "");
+  const countCorrectChars = (userInput) => {
+    const data = text.replace(" ", "");
     return userInput
       .replace(" ", "")
       .split("")
-      .filter((char, index) => char === text[index]).length;
+      .filter((char, index) => char === data[index]).length;
   };
 
-  render() {
-    return (
-      <>
-        <Header />
-        <Animation />
-        <Metrics
-          secs={this.state.secs}
-          wpm={this.state.wpm}
-          accuracy={this.state.accuracy}
-        />
-        <Game
-          text={this.state.text}
-          userInput={this.state.userInput}
-          value={this.state.userInput}
-          onChange={this.onUserInputChange}
-          readOnly={this.state.finished}
-          onClick={this.onRestart}
-          ids={this.state.id}
-          finished={this.state.finished}
-          started={this.state.started}
-        />
-      </>
-    );
-  }
-}
+  // EVENT HANDLER TO GET GAME MODE INFORMATION
+  const onUserSelect = (event) => {
+    setGameMode(parseInt(event.target.value));
+  };
+
+  return (
+    <>
+      <Header />
+      <Animation
+        characters={chars}
+        gameMode={gameMode}
+        gameWon={gameWon}
+        finished={finished}
+      />
+      <Metrics
+        secs={secs}
+        wpm={wpm}
+        accuracy={accuracy}
+        onUserSelect={onUserSelect}
+        characters={chars}
+      />
+      <Game
+        text={text}
+        userInput={userInput}
+        value={userInput}
+        onChange={onUserInputChange}
+        readOnly={finished}
+        onClick={onRestart}
+        ids={id}
+        finished={finished}
+        started={started}
+      />
+    </>
+  );
+};
+
+export default DiscoverHooks;
