@@ -5,7 +5,10 @@ import Header from "../Header/Header";
 import Animation from "../Animation/Animation";
 import Metrics from "../Metrics/Metrics";
 import Game from "../Game/Game";
-// import "./discover.scss";
+import "./discover.scss";
+import Swal from "sweetalert2/dist/sweetalert2.js";
+import "sweetalert2/src/sweetalert2.scss";
+import crying from "../../assets/gifs/crying-astronaut.gif";
 
 const DiscoverHooks = () => {
   const [id, setId] = useState([]);
@@ -37,9 +40,9 @@ const DiscoverHooks = () => {
       // console.log(started);
       if (secs === 60) {
         clearInterval(interval);
-        alert(
-          "Oh no! You ran out of oxygen! The spaceship has left without you!"
-        );
+        setTimeout(() => {
+          failMessage();
+        }, 9000);
       }
     }
     return () => {
@@ -63,19 +66,35 @@ const DiscoverHooks = () => {
   }, [gameMode]);
 
   //USE EFFECT TO TRACK IF GAME IS WON
+  // useEffect(() => {
+  //   if ((gameMode === 40) & (chars === 200)) {
+  //     winningReset();
+  //     setTimeout(() => {
+  //       // swalMessage();
+  //     }, 9000);
+  //   } else if ((gameMode === 60) & (chars === 300)) {
+  //     winningReset();
+  //     // alert("You got to the spaceship in time!");
+  //   } else if ((gameMode === 80) & (chars === 400)) {
+  //     winningReset();
+  //     // alert("You got to the spaceship in time!");
+  //   } else if ((gameMode === 100) & (chars === 500)) {
+  //     winningReset();
+  //     // alert("You got to the spaceship in time!");
+  //   }
+  // }, [gameMode, chars]);
+
   useEffect(() => {
-    if ((gameMode === 40) & (chars === 200)) {
+    if (
+      (gameMode === 40) & (chars === 200) ||
+      (gameMode === 60) & (chars === 300) ||
+      (gameMode === 80) & (chars === 400) ||
+      (gameMode === 100) & (chars === 500)
+    ) {
       winningReset();
-      alert("You got to the spaceship in time!");
-    } else if ((gameMode === 60) & (chars === 300)) {
-      winningReset();
-      alert("You got to the spaceship in time!");
-    } else if ((gameMode === 80) & (chars === 400)) {
-      winningReset();
-      alert("You got to the spaceship in time!");
-    } else if ((gameMode === 100) & (chars === 500)) {
-      winningReset();
-      alert("You got to the spaceship in time!");
+      setTimeout(() => {
+        winMessage();
+      }, 9000);
     }
   }, [gameMode, chars]);
 
@@ -183,6 +202,34 @@ const DiscoverHooks = () => {
   const onUserSelect = (event) => {
     setGameMode(parseInt(event.target.value));
   };
+
+  // GAME WIN OR FAIL ALERTS
+  const failMessage = () => {
+    Swal.fire({
+      color: "#000000",
+      title: "Oh no! You ran out of oxygen and the rocket left without you!",
+      html: '<lottie-player src="https://assets6.lottiefiles.com/packages/lf20_if8bcea1.json"  background="transparent"  speed="1"  style="width: 100px; height: 100px; margin-left: 175px;"  loop  autoplay></lottie-player>',
+      imageAlt: "Custom image",
+      confirmButtonText: "Oops!",
+      confirmButtonColor: "#000000",
+      allowOutsideClick: false,
+    });
+  };
+
+  const winMessage = () => {
+    Swal.fire({
+      color: "#000000",
+      title: "Congratulations!! You made it to the rocket in time!!",
+      html: '<lottie-player src="https://assets10.lottiefiles.com/packages/lf20_iwlmrnb5.json" background="transparent"  speed="1"  style="width: 100px; height: 100px; margin-left: 175px;"  loop  autoplay></lottie-player>',
+      imageAlt: "Custom image",
+      confirmButtonText: "Awesome!",
+      confirmButtonColor: "#000000",
+      allowOutsideClick: false,
+    });
+  };
+
+  // winMessage();
+  // failMessage();
 
   return (
     <>
