@@ -1,20 +1,36 @@
+@use "../../styles/partials/variables" as *;
+
 .metrics {
   display: flex;
   justify-content: center;
   padding: 5px 0;
   background-color: black;
 
-  &__form {
+  &__form-discover {
     display: flex;
     justify-content: space-between;
-    color: orange;
+    color: $active-purple;
     width: 500px;
   }
 
-  &__options {
+  &__form-develop {
+    display: flex;
+    justify-content: space-between;
+    color: $active-orange;
+    width: 500px;
+  }
+
+  &__options-discover {
     font-family: inherit;
     width: 100px;
-    color: orange;
+    color: $active-purple;
+    background-color: black;
+  }
+
+  &__options-develop {
+    font-family: inherit;
+    width: 100px;
+    color: $active-orange;
     background-color: black;
   }
 }

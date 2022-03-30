@@ -1,5 +1,6 @@
 import React from "react";
 import "./preview.scss";
+import TypeText from "../Widgets/TypeText/TypeText";
 
 const Preview = ({ text, userInput }) => {
   //TURN TEXT INTO ARRAY TO CHECK LETTER BY LETTER
@@ -11,6 +12,7 @@ const Preview = ({ text, userInput }) => {
   return (
     <section className="preview">
       <div className="preview__container">
+        <TypeText />
         {splitText.map((char, index) => {
           let colour;
           if (index < userInput.length) {

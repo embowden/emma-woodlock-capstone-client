@@ -1,0 +1,52 @@
+@use "../../../styles/partials/variables" as *;
+
+.modal {
+  z-index: 999;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: press start;
+
+  &__container {
+    width: 42rem;
+    height: auto;
+    padding: 0 1.5rem;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__title {
+    margin-top: 20px;
+    font-size: 24px;
+  }
+
+  &__instructions {
+    margin: 20px 0;
+    font-size: 16px;
+  }
+
+  &__text {
+    font-family: inconsolata;
+    padding-bottom: 20px;
+    line-height: 20px;
+  }
+}
+
+.border-gradient {
+  border: 10px solid;
+  border-image-slice: 1;
+  border-width: 5px;
+}
+.border-gradient-purple {
+  border-image-source: linear-gradient(to left, $active-purple, $active-orange);
+  //   border-radius: 10px;
+}

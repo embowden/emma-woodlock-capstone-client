@@ -8,8 +8,9 @@ import Game from "../Game/Game";
 import "./discover.scss";
 import Swal from "sweetalert2/dist/sweetalert2.js";
 import "sweetalert2/src/sweetalert2.scss";
+// import Modal from "../Widgets/Modal/Modal";
 
-const DiscoverHooks = () => {
+const DiscoverHooks = ({ match }) => {
   const [id, setId] = useState([]);
   const [text, setText] = useState("");
   const [userInput, setUserInput] = useState("");
@@ -63,25 +64,6 @@ const DiscoverHooks = () => {
     console.log(gameMode);
     // console.log(finished);
   }, [gameMode]);
-
-  //USE EFFECT TO TRACK IF GAME IS WON
-  // useEffect(() => {
-  //   if ((gameMode === 40) & (chars === 200)) {
-  //     winningReset();
-  //     setTimeout(() => {
-  //       // swalMessage();
-  //     }, 9000);
-  //   } else if ((gameMode === 60) & (chars === 300)) {
-  //     winningReset();
-  //     // alert("You got to the spaceship in time!");
-  //   } else if ((gameMode === 80) & (chars === 400)) {
-  //     winningReset();
-  //     // alert("You got to the spaceship in time!");
-  //   } else if ((gameMode === 100) & (chars === 500)) {
-  //     winningReset();
-  //     // alert("You got to the spaceship in time!");
-  //   }
-  // }, [gameMode, chars]);
 
   useEffect(() => {
     if (
@@ -207,7 +189,7 @@ const DiscoverHooks = () => {
     Swal.fire({
       color: "#000000",
       title: "Oh no! You ran out of oxygen and the rocket left without you!",
-      html: '<lottie-player src="https://assets6.lottiefiles.com/packages/lf20_if8bcea1.json"  background="transparent"  speed="1"  style="width: 100px; height: 100px; margin-left: 175px;"  loop  autoplay></lottie-player>',
+      html: '<lottie-player src="https://assets6.lottiefiles.com/packages/lf20_if8bcea1.json"  background="transparent"  speed="1"  style="width: 150px; height: 150px; margin-left: 150px;"  loop  autoplay></lottie-player>',
       imageAlt: "Custom image",
       confirmButtonText: "Oops!",
       confirmButtonColor: "#000000",
@@ -219,7 +201,7 @@ const DiscoverHooks = () => {
     Swal.fire({
       color: "#000000",
       title: "Congratulations!! You made it to the rocket in time!!",
-      html: '<lottie-player src="https://assets10.lottiefiles.com/packages/lf20_iwlmrnb5.json" background="transparent"  speed="1"  style="width: 100px; height: 100px; margin-left: 175px;"  loop  autoplay></lottie-player>',
+      html: '<lottie-player src="https://assets10.lottiefiles.com/packages/lf20_iwlmrnb5.json" background="transparent"  speed="1"  style="width: 150px; height: 150px; margin-left: 150px;"  loop  autoplay></lottie-player>',
       imageAlt: "Custom image",
       confirmButtonText: "Awesome!",
       confirmButtonColor: "#000000",
@@ -229,7 +211,8 @@ const DiscoverHooks = () => {
 
   return (
     <>
-      <Header />
+      {/* <Modal /> */}
+      <Header match={match} />
       <Animation
         characters={chars}
         gameMode={gameMode}
@@ -237,6 +220,7 @@ const DiscoverHooks = () => {
         finished={finished}
       />
       <Metrics
+        match={match}
         secs={secs}
         wpm={wpm}
         accuracy={accuracy}
@@ -244,6 +228,7 @@ const DiscoverHooks = () => {
         characters={chars}
       />
       <Game
+        match={match}
         text={text}
         userInput={userInput}
         value={userInput}

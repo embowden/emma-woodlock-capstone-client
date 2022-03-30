@@ -1,17 +1,43 @@
+@use "../../styles/partials/variables" as *;
+
 .header {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   background-color: black;
-  // border: 2px solid blue;
-  // width: 650px;
 
   &__container {
     width: 650px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    // border: 2px solid blue;
+  }
+
+  &__arrow {
+    animation: pulse;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+  }
+
+  &__arrow-left {
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    top: 30px;
+    right: 145px;
+    filter: invert(1);
+    transform: rotate(-20deg);
+  }
+
+  &__arrow-right {
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    top: 25px;
+    left: 140px;
+    filter: invert(1);
+    transform: rotate(200deg);
   }
 
   &__select {
@@ -20,10 +46,17 @@
     letter-spacing: 2px;
   }
 
-  &__text {
+  &__text-discover {
     position: absolute;
     top: 78px;
-    color: orange;
+    color: $active-purple;
+    font-size: 10px;
+  }
+
+  &__text-develop {
+    position: absolute;
+    top: 78px;
+    color: $active-orange;
     font-size: 10px;
   }
 
@@ -31,13 +64,32 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
-    margin: 10px 0;
+    margin-bottom: 14px;
   }
 
-  &__link {
+  &__link-discover {
     padding: 0 10px;
     border-radius: 25px;
-    border: 1.5px solid orange;
-    color: orange;
+    border: 1.5px dashed $inactive-purple;
+    color: $inactive-purple;
+
+    &--active {
+      @extend .header__link-discover;
+      border: 1.5px solid $active-purple;
+      color: $active-purple;
+    }
+  }
+
+  &__link-develop {
+    padding: 0 10px;
+    border-radius: 25px;
+    border: 1.5px dashed $inactive-orange;
+    color: $inactive-orange;
+
+    &--active {
+      @extend .header__link-develop;
+      border: 1.5px solid $active-orange;
+      color: $active-orange;
+    }
   }
 }

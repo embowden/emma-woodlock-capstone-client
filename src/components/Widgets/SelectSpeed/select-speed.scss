@@ -1,0 +1,21 @@
+.speed {
+  position: absolute;
+  right: 150px;
+  bottom: 210px;
+  display: flex;
+  align-items: center;
+  animation: pulse;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+
+  &__select {
+    color: lime;
+    margin-left: 10px;
+  }
+
+  &__arrow {
+    height: 60px;
+    width: 60px;
+    filter: invert(1);
+  }
+}

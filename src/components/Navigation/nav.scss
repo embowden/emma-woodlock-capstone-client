@@ -1,3 +1,5 @@
+@use "../../styles/partials/variables" as *;
+
 .nav {
   font-family: bungee;
   background-image: url("../../assets/images/space-one.jpeg");
@@ -10,8 +12,10 @@
   &__link {
     font-size: 14px;
     color: #fff;
-    text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #0fa,
-      0 0 82px #0fa, 0 0 92px #0fa, 0 0 102px #0fa, 0 0 151px #0fa;
+    text-shadow: 0 0 7px $active-purple, 0 0 10px $active-purple,
+      0 0 21px $active-purple, 0 0 42px $active-purple, 0 0 82px $active-purple,
+      0 0 92px $active-purple, 0 0 102px $active-purple,
+      0 0 151px $active-purple;
 
     &--active {
       @extend .nav__link;

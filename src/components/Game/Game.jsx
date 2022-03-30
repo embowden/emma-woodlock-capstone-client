@@ -13,6 +13,7 @@ const Game = ({
   ids,
   finished,
   started,
+  match,
 }) => {
   let showButton = true;
   if (started) {
@@ -35,7 +36,11 @@ const Game = ({
           <Preview text={text} userInput={userInput} />
           {!finished ? (
             <textarea
-              className="game__textarea"
+              className={
+                match.path === "/discover"
+                  ? "game__textarea"
+                  : "game__textarea-develop"
+              }
               value={value}
               onChange={onChange}
               placeholder="Start typing..."
@@ -45,12 +50,25 @@ const Game = ({
             <Links mode={"discover"} ids={ids} />
           )}
           {showButton ? (
-            <button className="game__disabled">
+            <button
+              className={
+                match.path === "/discover"
+                  ? "game__disabled-discover"
+                  : "game__disabled-develop"
+              }
+            >
               Start typing to begin the game!
             </button>
           ) : null}
           {restartButton ? (
-            <button className="game__button" onClick={onClick}>
+            <button
+              className={
+                match.path === "/discover"
+                  ? "game__button-discover"
+                  : "game__button-develop"
+              }
+              onClick={onClick}
+            >
               Restart!
             </button>
           ) : null}

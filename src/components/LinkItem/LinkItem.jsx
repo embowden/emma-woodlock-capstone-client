@@ -1,11 +1,11 @@
 import React from "react";
-// import "./link-item.scss";
+import "./link-item.scss";
 
 const LinkItem = ({ link, title }) => {
   return (
-    <li>
-      <a href={link}>{title}</a>
-    </li>
+    <a className="link-item" href={link}>
+      {title}
+    </a>
   );
 };
 

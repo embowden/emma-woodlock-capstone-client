@@ -17,6 +17,7 @@ const Resources = () => {
       </div>
       <p>https://www.npmjs.com/package/lottie-react</p>
       <p>https://www.npmjs.com/package/darkmode-js</p>
+      <p>https://css-tricks.com/gradient-borders-in-css/</p>
     </section>
   );
 };

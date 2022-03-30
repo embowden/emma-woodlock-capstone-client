@@ -1,3 +1,5 @@
+@use "../../styles/partials/variables" as *;
+
 .game {
   background-color: black;
   display: flex;
@@ -15,7 +17,8 @@
   &__textarea {
     font-family: inconsolata;
     background-color: white;
-    color: lightgray;
+    color: rgb(128, 32, 197);
+    font-weight: 300;
     width: 95%;
     resize: none;
     padding: 5px;
@@ -23,16 +26,36 @@
     border-radius: 4px;
   }
 
-  &__button {
+  &__textarea-develop {
+    @extend .game__textarea;
+    color: orange;
+  }
+
+  &__button-discover {
+    color: white;
     width: 300px;
     border-radius: 25px;
     border: 0;
     font-family: inherit;
-    background-color: orange;
+    background-color: $active-purple;
   }
 
-  &__disabled {
-    @extend .game__button;
+  &__button-develop {
+    color: white;
+    width: 300px;
+    border-radius: 25px;
+    border: 0;
+    font-family: inherit;
+    background-color: $active-orange;
+  }
+
+  &__disabled-discover {
+    @extend .game__button-discover;
+    pointer-events: none;
+  }
+
+  &__disabled-develop {
+    @extend .game__button-develop;
     pointer-events: none;
   }
 }
