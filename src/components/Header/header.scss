@@ -2,15 +2,39 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: black;
+  // width: 650px;
 
+  &__container {
+    width: 650px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-//   &__header {
-//   }
+  &__select {
+    font-size: 24px;
+    color: white;
+    letter-spacing: 2px;
+  }
+
+  &__text {
+    position: absolute;
+    top: 90px;
+    color: orange;
+    font-size: 10px;
+  }
 
   &__modes {
     display: flex;
     justify-content: space-evenly;
     width: 100%;
+    margin: 10px 0;
+  }
 
+  &__link {
+    padding: 0 10px;
+    background-color: lemonchiffon;
+    border-radius: 25px;
   }
 }

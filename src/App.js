@@ -13,6 +13,7 @@ function App() {
   return (
     <>
       <div className="wrapper">
+        {/* <div className="wrapper__two"> */}
         <Nav />
         <Switch>
           <Route
@@ -42,6 +43,7 @@ function App() {
           />
         </Switch>
         <Footer />
+        {/* </div> */}
       </div>
     </>
   );

@@ -4,9 +4,9 @@ import "./footer.scss";
 const Footer = () => {
   return (
     <footer className="footer">
-      <p>https://github.com/embowden</p>
-      <p>Emma Woodlock</p>
-      <p>https://www.linkedin.com/in/etbowden/</p>
+      <p className="footer__text">https://github.com/embowden</p>
+      <p className="footer__text">Emma Woodlock</p>
+      <p className="footer__text">https://www.linkedin.com/in/etbowden/</p>
     </footer>
   );
 };

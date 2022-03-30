@@ -8,7 +8,6 @@ import Game from "../Game/Game";
 import "./discover.scss";
 import Swal from "sweetalert2/dist/sweetalert2.js";
 import "sweetalert2/src/sweetalert2.scss";
-import crying from "../../assets/gifs/crying-astronaut.gif";
 
 const DiscoverHooks = () => {
   const [id, setId] = useState([]);
@@ -227,9 +226,6 @@ const DiscoverHooks = () => {
       allowOutsideClick: false,
     });
   };
-
-  // winMessage();
-  // failMessage();
 
   return (
     <>

@@ -5,11 +5,26 @@ import "./header.scss";
 const Header = () => {
   return (
     <header className="header">
-      <h1 className="header__header">select your mode</h1>
-      <article className="header__modes">
-        <NavLink to="/discover">discover</NavLink>
-        <NavLink to="/develop">develop</NavLink>
-      </article>
+      <section className="header__container">
+        <h1 className="header__select">select your mode</h1>
+        <p className="header__text">hover over a mode to learn more</p>
+        <article className="header__modes">
+          <NavLink
+            to="/discover"
+            // className={(isActive) => "header__link" + (!isActive ? "" : "--active")}
+            className="header__link"
+          >
+            discover
+          </NavLink>
+          <NavLink
+            to="/develop"
+            // className={(isActive) => "header__link" + (!isActive ? "" : "--active")}
+            className="header__link"
+          >
+            develop
+          </NavLink>
+        </article>
+      </section>
     </header>
   );
 };

@@ -1,6 +1,24 @@
 .nav {
-    font-family: bungee;
-    border: 2px solid lime;
-    display: flex;
-    justify-content: space-evenly;
+  font-family: bungee;
+  background-image: url("../../assets/images/space-one.jpeg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: space-evenly;
+
+  &__link {
+    font-size: 20px;
+    color: #fff;
+    text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #0fa,
+      0 0 82px #0fa, 0 0 92px #0fa, 0 0 102px #0fa, 0 0 151px #0fa;
+
+    &--active {
+      @extend .nav__link;
+      color: fuchsia;
+    }
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }

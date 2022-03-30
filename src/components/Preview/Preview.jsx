@@ -1,4 +1,5 @@
 import React from "react";
+import "./preview.scss";
 
 const Preview = ({ text, userInput }) => {
   //TURN TEXT INTO ARRAY TO CHECK LETTER BY LETTER
@@ -8,7 +9,7 @@ const Preview = ({ text, userInput }) => {
   //IF THE USER INPUT MATCHES THE TEXT, SHOW GREEN
   //IF THE USER INPUT DOES NOT MATCH, SHOW RED
   return (
-    <div>
+    <div className="preview"> 
       {splitText.map((char, index) => {
         let colour;
         if (index < userInput.length) {
