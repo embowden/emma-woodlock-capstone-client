@@ -1,5 +1,6 @@
 // import React, { Component } from "react";
 import React, { useEffect, useState } from "react";
+import Darkmode from "darkmode-js";
 import axios from "axios";
 import Header from "../Header/Header";
 import Animation from "../Animation/Animation";
@@ -18,6 +19,25 @@ const DiscoverHooks = () => {
   const [wpm, setWpm] = useState(0);
   const [accuracy, setAccuracy] = useState(0);
   const [gameMode, setGameMode] = useState(40);
+
+  //LIGHT AND DARK MODE
+  const options = {
+    bottom: "480px", // default: '32px'
+    // top: "500px",
+    right: "5px", // default: '32px'
+    // left: "0", // default: 'unset'
+    time: "0.5s", // default: '0.3s'
+    mixColor: "#fff", // default: '#fff'
+    backgroundColor: "#fff", // default: '#fff'
+    buttonColorDark: "#100f2c", // default: '#100f2c'
+    buttonColorLight: "#fff", // default: '#fff'
+    saveInCookies: false, // default: true,
+    label: "🌓", // default: ''
+    autoMatchOsTheme: true, // default: true
+  };
+
+  const darkmode = new Darkmode(options);
+  darkmode.showWidget();
 
   //USE EFFECT TO COLLECT INITIAL DATA
   useEffect(() => {

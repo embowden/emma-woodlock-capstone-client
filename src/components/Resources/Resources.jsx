@@ -16,6 +16,7 @@ const Resources = () => {
         </a>
       </div>
       <p>https://www.npmjs.com/package/lottie-react</p>
+      <p>https://www.npmjs.com/package/darkmode-js</p>
     </section>
   );
 };
