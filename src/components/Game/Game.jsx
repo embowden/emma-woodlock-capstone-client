@@ -31,23 +31,30 @@ const Game = ({
   return (
     <>
       <section className="game">
-        <Preview text={text} userInput={userInput} />
-        {!finished ? (
-          <textarea
-            value={value}
-            onChange={onChange}
-            placeholder="Start typing..."
-            readOnly={readOnly}
-          ></textarea>
-        ) : (
-          <Links mode={"discover"} ids={ids} />
-        )}
-        {showButton ? (
-          <button className="game__disabled">
-            Start typing to begin the game!
-          </button>
-        ) : null}
-        {restartButton ? <button onClick={onClick}>Restart!</button> : null}
+        <section className="game__container">
+          <Preview text={text} userInput={userInput} />
+          {!finished ? (
+            <textarea
+              className="game__textarea"
+              value={value}
+              onChange={onChange}
+              placeholder="Start typing..."
+              readOnly={readOnly}
+            ></textarea>
+          ) : (
+            <Links mode={"discover"} ids={ids} />
+          )}
+          {showButton ? (
+            <button className="game__disabled">
+              Start typing to begin the game!
+            </button>
+          ) : null}
+          {restartButton ? (
+            <button className="game__button" onClick={onClick}>
+              Restart!
+            </button>
+          ) : null}
+        </section>
       </section>
     </>
   );

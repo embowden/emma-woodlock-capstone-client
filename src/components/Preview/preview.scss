@@ -1,3 +1,8 @@
 .preview {
-  font-family: "Times New Roman", Times, serif;
+  font-family: inconsolata;
+  font-weight: 400;
+
+  &__container {
+    height: 60px;
+  }
 }

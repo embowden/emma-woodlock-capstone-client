@@ -8,7 +8,7 @@ const Metrics = ({ secs, wpm, accuracy, onUserSelect }) => {
         <p>{secs} seconds</p>
         <p>{Math.round(wpm)} WPM</p>
         <p>{Math.round(accuracy)}%</p>
-        <select name="" onChange={onUserSelect}>
+        <select className="metrics__options" name="" onChange={onUserSelect}>
           <option value="40">40WPM</option>
           <option value="60">60WPM</option>
           <option value="80">80WPM</option>

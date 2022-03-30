@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: center;
   background-color: black;
+  // border: 2px solid blue;
   // width: 650px;
 
   &__container {
@@ -10,6 +11,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    // border: 2px solid blue;
   }
 
   &__select {
@@ -20,21 +22,22 @@
 
   &__text {
     position: absolute;
-    top: 90px;
+    top: 78px;
     color: orange;
     font-size: 10px;
   }
 
   &__modes {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     width: 100%;
     margin: 10px 0;
   }
 
   &__link {
     padding: 0 10px;
-    background-color: lemonchiffon;
     border-radius: 25px;
+    border: 1.5px solid orange;
+    color: orange;
   }
 }

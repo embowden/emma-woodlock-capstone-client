@@ -4,9 +4,21 @@ import "./footer.scss";
 const Footer = () => {
   return (
     <footer className="footer">
-      <p className="footer__text">https://github.com/embowden</p>
+      <a
+        className="footer__text"
+        target="_blank"
+        href="https://github.com/embowden"
+      >
+        github.com/embowden
+      </a>
       <p className="footer__text">Emma Woodlock</p>
-      <p className="footer__text">https://www.linkedin.com/in/etbowden/</p>
+      <a
+        className="footer__text"
+        target="_blank"
+        href="https://www.linkedin.com/in/etbowden/"
+      >
+        linkedin.com/etbowden
+      </a>
     </footer>
   );
 };

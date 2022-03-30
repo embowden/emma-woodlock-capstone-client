@@ -9,19 +9,24 @@ const Preview = ({ text, userInput }) => {
   //IF THE USER INPUT MATCHES THE TEXT, SHOW GREEN
   //IF THE USER INPUT DOES NOT MATCH, SHOW RED
   return (
-    <div className="preview"> 
-      {splitText.map((char, index) => {
-        let colour;
-        if (index < userInput.length) {
-          colour = char === userInput[index] ? "#42f57e" : "#f54242";
-        }
-        return (
-          <span style={{ backgroundColor: colour }} key={index}>
-            {char}
-          </span>
-        );
-      })}
-    </div>
+    <section className="preview">
+      <div className="preview__container">
+        {splitText.map((char, index) => {
+          let colour;
+          if (index < userInput.length) {
+            colour = char === userInput[index] ? "#42f57e" : "#f54242";
+          }
+          return (
+            <span
+              style={{ backgroundColor: colour, color: "white" }}
+              key={index}
+            >
+              {char}
+            </span>
+          );
+        })}
+      </div>
+    </section>
   );
 };
 
