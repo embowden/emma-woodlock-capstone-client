@@ -11,12 +11,17 @@
   padding: 3px 0;
 
   &__logo {
+    // margin-right: 300px;
     display: flex;
     align-items: center;
     justify-content: center;
+    color: white;
+    font-family: gugi;
+    font-size: 24px;
   }
 
   &__image {
+    margin: 0 2px;
     height: 30px;
     width: 30px;
   }

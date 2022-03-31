@@ -1,5 +1,6 @@
 // import React, { Component } from "react";
 import React, { useEffect, useState } from "react";
+import { API_SUMMARY } from "../../api/endpoints";
 import axios from "axios";
 import Header from "../Header/Header";
 import Animation from "../Animation/Animation";
@@ -88,7 +89,7 @@ const DiscoverHooks = ({ match }) => {
   //GET INITIAL RANDOM SUMMARY
   const getStateData = async () => {
     try {
-      const response = await axios.post("http://localhost:8080/mdn/summary", {
+      const response = await axios.post(API_SUMMARY, {
         id: id,
       });
       setText(response.data.summary);
@@ -102,7 +103,7 @@ const DiscoverHooks = ({ match }) => {
   //GET ANOTHER RANDOM SUMMARY AND CONCATENATE
   const getMoreStateData = async () => {
     try {
-      const response = await axios.post("http://localhost:8080/mdn/summary", {
+      const response = await axios.post(API_SUMMARY, {
         id: id,
       });
       id.push(response.data.id);

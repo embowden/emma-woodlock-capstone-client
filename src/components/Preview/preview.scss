@@ -1,9 +1,11 @@
 .preview {
   font-family: inconsolata;
   font-weight: 400;
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
 
   &__container {
-    // overflow: scroll;
     height: 60px;
   }
 }

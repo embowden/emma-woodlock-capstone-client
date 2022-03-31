@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { API_CODE } from "../../api/endpoints";
 import axios from "axios";
 import Header from "../Header/Header";
 import Animation from "../Animation/Animation";
@@ -19,7 +20,7 @@ const Develop = ({ match }) => {
   const [gameWon, setGameWon] = useState(false);
   const [wpm, setWpm] = useState(0);
   const [accuracy, setAccuracy] = useState(0);
-  const [gameMode, setGameMode] = useState(40);
+  const [gameMode, setGameMode] = useState(10);
 
   //USE EFFECT TO COLLECT INITIAL DATA
   useEffect(() => {
@@ -63,10 +64,10 @@ const Develop = ({ match }) => {
 
   useEffect(() => {
     if (
+      (gameMode === 10) & (chars === 50) ||
       (gameMode === 20) & (chars === 100) ||
       (gameMode === 30) & (chars === 150) ||
-      (gameMode === 40) & (chars === 200) ||
-      (gameMode === 50) & (chars === 250)
+      (gameMode === 40) & (chars === 200)
     ) {
       winningReset();
       setTimeout(() => {
@@ -85,7 +86,7 @@ const Develop = ({ match }) => {
   //GET INITIAL RANDOM SUMMARY
   const getStateData = async () => {
     try {
-      const response = await axios.post("http://localhost:8080/mdn/code", {
+      const response = await axios.post(API_CODE, {
         id: id,
       });
       setText(response.data.code);
@@ -99,7 +100,7 @@ const Develop = ({ match }) => {
   //GET ANOTHER RANDOM SUMMARY AND CONCATENATE
   const getMoreStateData = async () => {
     try {
-      const response = await axios.post("http://localhost:8080/mdn/code", {
+      const response = await axios.post(API_CODE, {
         id: id,
       });
       id.push(response.data.id);
@@ -123,7 +124,7 @@ const Develop = ({ match }) => {
     setFinished(false);
     setWpm(0);
     setAccuracy(0);
-    setGameMode(40);
+    setGameMode(10);
     getStateData();
   };
 
