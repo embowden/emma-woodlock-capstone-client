@@ -92,4 +92,28 @@
       color: $active-orange;
     }
   }
+
+  &__modal-one {
+    position: absolute;
+    font-family: press start;
+    left: 310px;
+    top: 95px;
+    border: 0;
+    padding: 2px;
+    border-radius: 50%;
+    background-color: lime;
+    padding-left: 3px;
+  }
+
+  &__modal-two {
+    position: absolute;
+    font-family: press start;
+    right: 310px;
+    top: 95px;
+    border: 0;
+    padding: 2px;
+    border-radius: 50%;
+    background-color: lime;
+    padding-left: 3px;
+  }
 }

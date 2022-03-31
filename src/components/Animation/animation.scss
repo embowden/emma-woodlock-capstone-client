@@ -4,17 +4,23 @@
   width: 100%;
   background-color: black;
 
-  &__container {
+  &__container-discover {
     width: 650px;
     height: 290px;
-    // border: 2px solid black;
     background-image: url("../../assets/images/meteor-shower.jpg");
     background-position: center;
     background-size: cover;
   }
 
+  &__container-develop {
+    width: 650px;
+    height: 290px;
+    background-image: url("../../assets/images/space.jpg");
+    background-position: center;
+    background-size: cover;
+  }
+
   &__animations {
-    // border: 2px solid lime;
     height: 100%;
     overflow: hidden;
   }

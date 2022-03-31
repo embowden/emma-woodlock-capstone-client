@@ -3,10 +3,18 @@ import SelectSpeed from "../Widgets/SelectSpeed/SelectSpeed";
 import Score from "../Widgets/Score/Score";
 import "./metrics.scss";
 
-const Metrics = ({ secs, wpm, accuracy, onUserSelect, match }) => {
+const Metrics = ({
+  secs,
+  wpm,
+  accuracy,
+  onUserSelect,
+  match,
+  finished,
+  userInput,
+}) => {
   return (
     <section className="metrics">
-      <Score />
+      {finished ? <Score /> : null}
       <form
         className={
           match.path === "/discover"
@@ -27,13 +35,24 @@ const Metrics = ({ secs, wpm, accuracy, onUserSelect, match }) => {
           name=""
           onChange={onUserSelect}
         >
-          <option value="40">40WPM</option>
-          <option value="60">60WPM</option>
-          <option value="80">80WPM</option>
-          <option value="100">100WPM</option>
+          {match.path === "/discover" ? (
+            <>
+              <option value="40">40WPM</option>
+              <option value="60">60WPM</option>
+              <option value="80">80WPM</option>
+              <option value="100">100WPM</option>
+            </>
+          ) : (
+            <>
+              <option value="20">20WPM</option>
+              <option value="30">30WPM</option>
+              <option value="40">40WPM</option>
+              <option value="50">50WPM</option>
+            </>
+          )}
         </select>
       </form>
-      <SelectSpeed />
+      {userInput.length > 0 ? null : <SelectSpeed />}
     </section>
   );
 };

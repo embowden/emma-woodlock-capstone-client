@@ -1,10 +1,9 @@
 import { useLottie } from "lottie-react";
-import discoverRocket from "../../../assets/lotties/rocket-only.json";
+import blueAstro from "../../../assets/lotties/blue-asto.json";
 
-const Rocket = () => {
-  
+const BlueAstronaut = () => {
   const options = {
-    animationData: discoverRocket,
+    animationData: blueAstro,
     loop: true,
     autoplay: true,
   };
@@ -12,4 +11,4 @@ const Rocket = () => {
   return View;
 };
 
-export default Rocket;
+export default BlueAstronaut;

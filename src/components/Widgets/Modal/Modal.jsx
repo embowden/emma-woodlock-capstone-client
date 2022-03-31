@@ -1,7 +1,7 @@
 import React from "react";
 import "./modal.scss";
 
-const Modal = () => {
+const Modal = ({ close, type }) => {
   const discoverMode = (
     <>
       <h1 className="modal__title">DISCOVER MODE</h1>
@@ -29,9 +29,9 @@ const Modal = () => {
   );
 
   return (
-    <aside className="modal">
+    <aside className="modal" onClick={close}>
       <section className="modal__container border-gradient border-gradient-purple">
-        {discoverMode}
+        {type == "discover" ? discoverMode : developMode}
       </section>
     </aside>
   );

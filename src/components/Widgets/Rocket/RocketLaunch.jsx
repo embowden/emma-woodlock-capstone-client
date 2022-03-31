@@ -1,9 +1,9 @@
 import { useLottie } from "lottie-react";
-import rocketAnimation from "../../../assets/lotties/rocket.json";
+import discoverRocketLaunch from "../../../assets/lotties/rocket.json";
 
 const RocketLaunch = () => {
   const options = {
-    animationData: rocketAnimation,
+    animationData: discoverRocketLaunch,
     loop: true,
     autoplay: true,
   };

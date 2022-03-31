@@ -5,7 +5,9 @@ import "./nav.scss";
 const Nav = () => {
   return (
     <nav className="nav">
-      <NavLink to="/">LOGO</NavLink>
+      <NavLink className="nav__logo" to="/">
+        <img className="nav__image" src="" alt="" />
+      </NavLink>
       <NavLink
         to="/the-code"
         className={(isActive) => "nav__link" + (!isActive ? "" : "--active")}

@@ -29,7 +29,7 @@ const Links = ({ mode, ids }) => {
       {!resources ? null : (
         <section className="links">
           <div className="links__container">
-            <h3 className="links__header">Check out the resources below!</h3>
+            <h3 className="links__header">Check out the links to MDN below!</h3>
             <div className="links__list">
               {resources.map((object) => {
                 return (

@@ -8,7 +8,6 @@ import Game from "../Game/Game";
 import "./discover.scss";
 import Swal from "sweetalert2/dist/sweetalert2.js";
 import "sweetalert2/src/sweetalert2.scss";
-// import Modal from "../Widgets/Modal/Modal";
 
 const DiscoverHooks = ({ match }) => {
   const [id, setId] = useState([]);
@@ -59,7 +58,7 @@ const DiscoverHooks = ({ match }) => {
     }
   }, [secs]);
 
-  //USE EFFECT TO UPDATE GAME MODE
+  //USE EFFECTS TO UPDATE GAME MODE
   useEffect(() => {
     console.log(gameMode);
     // console.log(finished);
@@ -211,13 +210,13 @@ const DiscoverHooks = ({ match }) => {
 
   return (
     <>
-      {/* <Modal /> */}
-      <Header match={match} />
+      <Header match={match} userInput={userInput} />
       <Animation
         characters={chars}
         gameMode={gameMode}
         gameWon={gameWon}
         finished={finished}
+        match={match}
       />
       <Metrics
         match={match}
@@ -226,6 +225,8 @@ const DiscoverHooks = ({ match }) => {
         accuracy={accuracy}
         onUserSelect={onUserSelect}
         characters={chars}
+        finished={finished}
+        userInput={userInput}
       />
       <Game
         match={match}
