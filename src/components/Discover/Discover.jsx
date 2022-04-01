@@ -9,6 +9,9 @@ import Game from "../Game/Game";
 import "./discover.scss";
 import Swal from "sweetalert2/dist/sweetalert2.js";
 import "sweetalert2/src/sweetalert2.scss";
+import tune from "../../assets/audio/theme-tune.mp3";
+import Toggle from "react-toggle";
+import "react-toggle/style.css";
 
 const DiscoverHooks = ({ match }) => {
   const [id, setId] = useState([]);
@@ -22,6 +25,8 @@ const DiscoverHooks = ({ match }) => {
   const [wpm, setWpm] = useState(0);
   const [accuracy, setAccuracy] = useState(0);
   const [gameMode, setGameMode] = useState(40);
+  const [musicPlay, setMusicPlay] = useState(false);
+  const [music, setMusic] = useState(new Audio(tune));
 
   //USE EFFECT TO COLLECT INITIAL DATA
   useEffect(() => {
@@ -37,7 +42,6 @@ const DiscoverHooks = ({ match }) => {
       interval = setInterval(() => {
         setSecs((secs) => secs + 1);
       }, 1000);
-      // console.log(started);
       if (secs === 60) {
         clearInterval(interval);
         setTimeout(() => {
@@ -52,7 +56,6 @@ const DiscoverHooks = ({ match }) => {
 
   //USE EFFECT TO UPDATE STATE WHEN TIMER STOPS
   useEffect(() => {
-    // console.log("is this working");
     if (secs === 60) {
       setStarted(false);
       setFinished(true);
@@ -62,7 +65,6 @@ const DiscoverHooks = ({ match }) => {
   //USE EFFECTS TO UPDATE GAME MODE
   useEffect(() => {
     console.log(gameMode);
-    // console.log(finished);
   }, [gameMode]);
 
   useEffect(() => {
@@ -78,6 +80,26 @@ const DiscoverHooks = ({ match }) => {
       }, 9000);
     }
   }, [gameMode, chars]);
+
+  //USE EFFECT FOR MUSIC
+  useEffect(() => {
+    if (musicPlay) {
+      music.play();
+    } else if (!musicPlay) {
+      music.pause();
+    }
+  }, [musicPlay]);
+
+  //SOUND EFFECTS
+  const handleMusic = () => {
+    if (musicPlay === true) {
+      setMusicPlay(false);
+      console.log(musicPlay);
+    } else if (musicPlay === false) {
+      setMusicPlay(true);
+      console.log(musicPlay);
+    }
+  };
 
   //FUNCTION TO SET STATES IF WON BEFORE TIMER
   const winningReset = () => {
@@ -212,6 +234,17 @@ const DiscoverHooks = ({ match }) => {
   return (
     <>
       <Header match={match} userInput={userInput} />
+      <div className="disc__toggle">
+        <Toggle
+          id="music-status"
+          defaultChecked={musicPlay}
+          onChange={handleMusic}
+          className="custom-classname"
+        />
+        <label className="disc__label" htmlFor="music-status">
+          MUSIC
+        </label>
+      </div>
       <Animation
         characters={chars}
         gameMode={gameMode}

@@ -44,10 +44,10 @@ const Metrics = ({
             </>
           ) : (
             <>
-              <option value="10">20WPM</option>
-              <option value="20">30WPM</option>
-              <option value="30">40WPM</option>
-              <option value="40">50WPM</option>
+              <option value="10">10WPM</option>
+              <option value="20">20WPM</option>
+              <option value="30">30WPM</option>
+              <option value="40">40WPM</option>
             </>
           )}
         </select>

@@ -1,0 +1,38 @@
+.intro {
+  padding: 0 180px;
+
+  &__container {
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  &__title {
+    margin: 50px 0;
+    font-family: gugi;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 72px;
+    color: white;
+  }
+
+  &__logo {
+    margin: 0 5px;
+    height: 100px;
+    width: 100px;
+  }
+
+  &__blurb {
+    margin-bottom: 50px;
+  }
+
+  &__enter {
+    color: black;
+    padding: 0 20px;
+    background-color: lime;
+    border-radius: 25px;
+  }
+}

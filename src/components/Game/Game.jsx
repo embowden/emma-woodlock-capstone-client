@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import Preview from "../Preview/Preview";
 import Links from "../Links/Links";
 import "./game.scss";
@@ -29,13 +29,20 @@ const Game = ({
     restartButton = false;
   }
 
+  //MANAGE CONTAINER SIZE
+  const prevContainer = useRef(null);
+  const keyPress = () => {
+    prevContainer.current.scrollIntoView(false);
+  };
+
   return (
     <>
       <section className="game">
         <section className="game__container">
-          <Preview text={text} userInput={userInput} />
+          <Preview text={text} userInput={userInput} cont={prevContainer} />
           {!finished ? (
             <textarea
+              onKeyDown={keyPress}
               className={
                 match.path === "/discover"
                   ? "game__textarea"

@@ -1,12 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import "./intro.scss";
+import helmet from "../../assets/images/helmet.svg";
+import "./intro.scss";
 
 const Intro = () => {
   return (
     <section className="intro">
       <section className="intro__container">
-        <h1 className="intro__title">TITLE OF THE GAME</h1>
+        <h1 className="intro__title">
+          {"<space"}
+          <img className="intro__logo" src={helmet} alt="" />
+          {"bar/>"}
+        </h1>
         <p className="intro__blurb">
           Text about the game: Lorem ipsum dolor sit, amet consectetur
           adipisicing elit. Nam obcaecati nihil beatae, ducimus sequi ipsam

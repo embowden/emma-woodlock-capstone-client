@@ -2,7 +2,7 @@ import React from "react";
 import "./preview.scss";
 import TypeText from "../Widgets/TypeText/TypeText";
 
-const Preview = ({ text, userInput }) => {
+const Preview = ({ text, userInput, cont }) => {
   //TURN TEXT INTO ARRAY TO CHECK LETTER BY LETTER
   const splitText = text.split("");
 
@@ -11,7 +11,7 @@ const Preview = ({ text, userInput }) => {
   //IF THE USER INPUT DOES NOT MATCH, SHOW RED
   return (
     <section className="preview">
-      <div className="preview__container">
+      <div className="preview__container" ref={cont}>
         {userInput.length > 0 ? null : <TypeText />}
         {splitText.map((char, index) => {
           let colour;

@@ -7,7 +7,10 @@ import Metrics from "../Metrics/Metrics";
 import Game from "../Game/Game";
 import Swal from "sweetalert2/dist/sweetalert2.js";
 import "sweetalert2/src/sweetalert2.scss";
-// import "./develop.scss";
+import "./develop.scss";
+import tune from "../../assets/audio/dev-theme-tune.mp3";
+import Toggle from "react-toggle";
+import "react-toggle/style.css";
 
 const Develop = ({ match }) => {
   const [id, setId] = useState([]);
@@ -21,6 +24,8 @@ const Develop = ({ match }) => {
   const [wpm, setWpm] = useState(0);
   const [accuracy, setAccuracy] = useState(0);
   const [gameMode, setGameMode] = useState(10);
+  const [musicPlay, setMusicPlay] = useState(false);
+  const [music, setMusic] = useState(new Audio(tune));
 
   //USE EFFECT TO COLLECT INITIAL DATA
   useEffect(() => {
@@ -75,6 +80,26 @@ const Develop = ({ match }) => {
       }, 9000);
     }
   }, [gameMode, chars]);
+
+  //USE EFFECT FOR MUSIC
+  useEffect(() => {
+    if (musicPlay) {
+      music.play();
+    } else if (!musicPlay) {
+      music.pause();
+    }
+  }, [musicPlay]);
+
+  //SOUND EFFECTS
+  const handleMusic = () => {
+    if (musicPlay === true) {
+      setMusicPlay(false);
+      console.log(musicPlay);
+    } else if (musicPlay === false) {
+      setMusicPlay(true);
+      console.log(musicPlay);
+    }
+  };
 
   //FUNCTION TO SET STATES IF WON BEFORE TIMER
   const winningReset = () => {
@@ -209,6 +234,17 @@ const Develop = ({ match }) => {
   return (
     <>
       <Header match={match} userInput={userInput} />
+      <div className="dev__toggle">
+        <Toggle
+          id="music-status"
+          defaultChecked={musicPlay}
+          onChange={handleMusic}
+          className="custom-classname"
+        />
+        <label className="dev__label" htmlFor="music-status">
+          MUSIC
+        </label>
+      </div>
       <Animation
         characters={chars}
         gameMode={gameMode}

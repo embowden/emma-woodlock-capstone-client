@@ -1,8 +1,25 @@
-.swal {
+.disc__toggle {
+  position: absolute;
+  right: 0;
+  top: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  margin-left: 40px;
-  color: #000000;
+  width: 150px;
 }
+
+.disc__label {
+  margin-left: 5px;
+  color: lime;
+  font-size: 14px;
+}
+
+// .swal {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   text-align: center;
+//   margin-left: 40px;
+//   color: #000000;
+// }
+

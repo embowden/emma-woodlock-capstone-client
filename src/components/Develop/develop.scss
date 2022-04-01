@@ -1,0 +1,15 @@
+.dev__toggle {
+  position: absolute;
+  right: 0;
+  top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+}
+
+.dev__label {
+  margin-left: 5px;
+  color: lime;
+  font-size: 14px;
+}
