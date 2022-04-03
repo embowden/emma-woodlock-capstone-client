@@ -51,6 +51,10 @@
 a:link,
 a:visited {
   text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 body {

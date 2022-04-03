@@ -13,8 +13,15 @@ import expressjs from "../../assets/logos/expressjs.svg";
 import nodemon from "../../assets/logos/nodemon.svg";
 import heroku from "../../assets/logos/heroku-icon.svg";
 import css from "../../assets/logos/css-3.svg";
+import gameNoise from "../../assets/audio/game-button.wav";
 
 const Code = () => {
+  //GAME NOISE ON CLICK EVENT
+  let gameSound = new Audio(gameNoise);
+  const handleSound = () => {
+    gameSound.play();
+  };
+
   return (
     <section className="code">
       <section className="code__container">
@@ -175,7 +182,7 @@ const Code = () => {
             </a>
           </div>
         </article>
-        <Link to="/discover" className="code__return">
+        <Link onClick={handleSound} to="/discover" className="code__return">
           BACK TO THE GAME
         </Link>
       </section>

@@ -5,6 +5,9 @@ import helmet from "../../assets/images/helmet.svg";
 import "./intro.scss";
 import Swal from "sweetalert2/dist/sweetalert2.js";
 import "sweetalert2/src/sweetalert2.scss";
+import successNoise from "../../assets/audio/click-noise.wav";
+import failNoise from "../../assets/audio/error.wav";
+import gameNoise from "../../assets/audio/game-button.wav";
 
 const Intro = () => {
   const [username, setUsername] = useState("");
@@ -12,6 +15,7 @@ const Intro = () => {
   //FUNCTION TO REDIRECT USER
   const history = useHistory();
   const routeChange = () => {
+    gameSound.play();
     let path = "/discover";
     history.push(path);
   };
@@ -23,16 +27,22 @@ const Intro = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (!username) {
-      // alert("Please add your name");
+      failSound.play();
       errorNameMissing();
     } else if (username.length < 2) {
+      failSound.play();
       errorNameTooShort();
-      // alert("Your name must be at least 2 characters long");
     } else {
+      sucessSound.play();
       localStorage.setItem("username", username);
       routeChange();
     }
   };
+
+  //SET MUSIC
+  let sucessSound = new Audio(successNoise);
+  let failSound = new Audio(failNoise);
+  let gameSound = new Audio(gameNoise);
 
   //ALERT FOR VALIDATION
   const errorNameMissing = () => {

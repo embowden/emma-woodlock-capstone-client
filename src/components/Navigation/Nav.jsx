@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import helmet from "../../assets/images/helmet.svg";
+import successNoise from "../../assets/audio/click-noise.wav";
 import "./nav.scss";
 
 const Nav = () => {
@@ -13,20 +14,28 @@ const Nav = () => {
     setUser(playerName);
   }, [user]);
 
+  //SET MUSIC
+  let sucessSound = new Audio(successNoise);
+  const handleSound = () => {
+    sucessSound.play();
+  };
+
   return (
     <nav className="nav">
-      <NavLink className="nav__logo" to="/">
+      <NavLink onClick={handleSound} className="nav__logo" to="/">
         {"<space"}
         <img className="nav__image" src={helmet} alt="" />
         {"bar/>"}
       </NavLink>
       <NavLink
+        onClick={handleSound}
         to="/the-code"
         className={(isActive) => "nav__link" + (!isActive ? "" : "--active")}
       >
         THE CODE
       </NavLink>
       <NavLink
+        onClick={handleSound}
         to="/resources"
         className={(isActive) => "nav__link" + (!isActive ? "" : "--active")}
       >
@@ -34,6 +43,7 @@ const Nav = () => {
       </NavLink>
       {!playerName ? (
         <NavLink
+          onClick={handleSound}
           to="/user-details"
           className={(isActive) => "nav__link" + (!isActive ? "" : "--active")}
         >
@@ -41,6 +51,7 @@ const Nav = () => {
         </NavLink>
       ) : (
         <NavLink
+          onClick={handleSound}
           to="/user-details"
           className={(isActive) => "nav__link" + (!isActive ? "" : "--active")}
         >

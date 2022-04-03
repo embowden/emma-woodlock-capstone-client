@@ -12,6 +12,7 @@ import "sweetalert2/src/sweetalert2.scss";
 import tune from "../../assets/audio/theme-tune.mp3";
 import Toggle from "react-toggle";
 import "react-toggle/style.css";
+import restartNoise from "../../assets/audio/restart.wav";
 
 const DiscoverHooks = ({ match }) => {
   const [id, setId] = useState([]);
@@ -157,8 +158,11 @@ const DiscoverHooks = ({ match }) => {
     }
   };
 
+  //RESTART SOUND EFFECT
+  let restartSound = new Audio(restartNoise);
   //EVENT HANDLER FOR RESTART BUTTON
   const onRestart = () => {
+    restartSound.play();
     setId([]);
     setText("");
     setUserInput("");

@@ -8,12 +8,19 @@ import gamesWon from "../../assets/images/games-won.png";
 import highScore from "../../assets/images/high-score.svg";
 import totalDays from "../../assets/images/total-days.png";
 import totalGames from "../../assets/images/total-games.png";
+import gameNoise from "../../assets/audio/game-button.wav";
 
 const User = () => {
   //COLLECT LOCAL STORAGE
   let scoreDisc = localStorage.getItem("highScoreDisc");
   let speedDisc = localStorage.getItem("highSpeedDisc");
   let playerName = localStorage.getItem("username");
+
+  //GAME NOISE ON CLICK EVENT
+  let gameSound = new Audio(gameNoise);
+  const handleSound = () => {
+    gameSound.play();
+  };
 
   return (
     <section className="user">
@@ -56,7 +63,7 @@ const User = () => {
             <p className="user__value">6</p>
           </div>
         </article>
-        <Link to="/discover" className="user__return">
+        <Link onClick={handleSound} to="/discover" className="user__return">
           BACK TO THE GAME
         </Link>
       </section>

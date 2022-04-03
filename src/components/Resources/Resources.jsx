@@ -4,9 +4,16 @@ import "./resources.scss";
 import Keyboard from "../Widgets/Keyboard/Keyboard";
 import leftQuote from "../../assets/images/left-quote.png";
 import rightQuote from "../../assets/images/right-quote.png";
-import touchTyping from "../../assets/images/keyboard.png";
+import touchTyping from "../../assets/images/keyboard-start.webp";
+import gameNoise from "../../assets/audio/game-button.wav";
 
 const Resources = () => {
+  //GAME NOISE ON CLICK EVENT
+  let gameSound = new Audio(gameNoise);
+  const handleSound = () => {
+    gameSound.play();
+  };
+
   return (
     <section className="resources">
       <section className="resources__container">
@@ -130,7 +137,11 @@ const Resources = () => {
             </a>
           </div>
         </section>
-        <Link to="/discover" className="resources__return">
+        <Link
+          onClick={handleSound}
+          to="/discover"
+          className="resources__return"
+        >
           BACK TO THE GAME
         </Link>
       </section>

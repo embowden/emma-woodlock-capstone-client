@@ -4,6 +4,8 @@ import "animate.css";
 import Modal from "../Widgets/Modal/Modal";
 import "./header.scss";
 import arrow from "../../assets/images/arrow.png";
+import modalNoise from "../../assets/audio/interface.wav";
+import modeNoise from "../../assets/audio/mode-noise.wav";
 
 const Header = ({ match, userInput }) => {
   const [showModal, setShowModal] = useState(false);
@@ -15,12 +17,20 @@ const Header = ({ match, userInput }) => {
 
   const displayModal = (event) => {
     console.log(event.target.name);
-    setModalType(event.target.name)
+    setModalType(event.target.name);
     setShowModal(true);
+    modalSound.play();
   };
 
   const onClose = () => {
     setShowModal(false);
+  };
+
+  //MODAL NOISE ON CLICK EVENT
+  let modalSound = new Audio(modalNoise);
+  let modeSound = new Audio(modeNoise);
+  const handleSound = () => {
+    modeSound.play();
   };
 
   return (
@@ -53,6 +63,7 @@ const Header = ({ match, userInput }) => {
               ?
             </button>
             <NavLink
+              onClick={handleSound}
               to="/discover"
               className={(isActive) =>
                 "header__link-discover" + (!isActive ? "" : "--active")
@@ -68,6 +79,7 @@ const Header = ({ match, userInput }) => {
               ?
             </button>
             <NavLink
+              onClick={handleSound}
               to="/develop"
               className={(isActive) =>
                 "header__link-develop" + (!isActive ? "" : "--active")
