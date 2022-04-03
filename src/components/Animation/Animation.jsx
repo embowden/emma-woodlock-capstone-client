@@ -14,6 +14,7 @@ import win from "../../assets/audio/win.wav";
 import lose from "../../assets/audio/lose.wav";
 
 const Animation = ({ characters, gameMode, gameWon, finished, match }) => {
+  //USE EFFECT FOR ANIMATION SOUNDS
   useEffect(() => {
     if (gameWon || (!gameWon && finished)) {
       setTimeout(() => {
@@ -42,8 +43,17 @@ const Animation = ({ characters, gameMode, gameWon, finished, match }) => {
   const youWon = new Audio(win);
   const youLost = new Audio(lose);
 
+  //LOCAL STORAGE COLLECTION
+  let scoreDisc = localStorage.getItem("highScoreDisc");
+  let scoreDev = localStorage.getItem("highScoreDev");
+
   return (
     <section className="animation">
+      {match.path === "/discover" ? (
+        <p className="animation__highscore-disc">high score: {scoreDisc} wpm</p>
+      ) : (
+        <p className="animation__highscore-dev">high score: {scoreDev} wpm</p>
+      )}
       <div
         className={
           match.path === "/discover"

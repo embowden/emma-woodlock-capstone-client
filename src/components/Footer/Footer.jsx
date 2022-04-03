@@ -11,7 +11,7 @@ const Footer = () => {
       >
         github.com/embowden
       </a>
-      <p className="footer__text">Emma Woodlock</p>
+      <p className="footer__text">created by Emma Woodlock</p>
       <a
         className="footer__text"
         target="_blank"

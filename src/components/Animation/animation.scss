@@ -1,8 +1,26 @@
+@use "../../styles/partials/variables" as *;
+
 .animation {
   display: flex;
   justify-content: center;
   width: 100%;
   background-color: black;
+
+  &__highscore-disc {
+    margin-top: 10px;
+    color: $active-orange;
+    position: absolute;
+    font-size: 10px;
+    font-family: press start;
+  }
+
+  &__highscore-dev {
+    margin-top: 10px;
+    color: $active-purple;
+    position: absolute;
+    font-size: 10px;
+    font-family: press start;
+  }
 
   &__container-discover {
     width: 650px;

@@ -7,10 +7,21 @@ const Modal = ({ close, type }) => {
       <h1 className="modal__title">DISCOVER MODE</h1>
       <p className="modal__instructions">INSTRUCTIONS</p>
       <p className="modal__text">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus et
-        optio ab necessitatibus adipisci. Earum porro aut non molestias
-        repellat. Numquam repellendus ipsa omnis expedita quae obcaecati! Quos,
-        officia ratione?
+        Want to improve your typing speed, but also learn some new methods at
+        the same time? Then, this is the mode for you! In discover mode, you
+        will type out sentences from our bible, MDN!
+        <br />
+        <br />
+        Select your speed, then proceed to type as quickly and accurately as
+        possible to reach the rocket! The game will start as soon as you begin
+        typing, you will have 60 seconds to complete the mission!
+        <br />
+        <br />
+        Once the game is over, links will be provided for you to go and
+        'discover' what you typed!
+        <br />
+        <br />
+        To play again, hit the restart button!
       </p>
     </>
   );
@@ -20,10 +31,22 @@ const Modal = ({ close, type }) => {
       <h1 className="modal__title">DEVELOPER MODE</h1>
       <p className="modal__instructions">INSTRUCTIONS</p>
       <p className="modal__text">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus et
-        optio ab necessitatibus adipisci. Earum porro aut non molestias
-        repellat. Numquam repellendus ipsa omnis expedita quae obcaecati! Quos,
-        officia ratione?
+        Struggling to find those pesky special characters? Play the game in
+        Develop Mode to practice typing special characters and improve your
+        coding skills!
+        <br />
+        <br />
+        Select your speed (these are much lower than Discover Mode!), then
+        proceed to type as quickly and accurately as possible to reach the
+        rocket! The game will start as soon as you begin typing, you will have
+        60 seconds to complete the mission!
+        <br />
+        <br />
+        Once the game is over, just like Discover Mode, links will be provided
+        for you to visit!
+        <br />
+        <br />
+        To play again, hit the restart button!
       </p>
     </>
   );

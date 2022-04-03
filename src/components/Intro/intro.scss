@@ -19,6 +19,20 @@
     color: white;
   }
 
+  &__subtitle {
+    font-family: press start;
+    color: lime;
+    font-size: px;
+    margin-top: -40px;
+  }
+
+  &__animation {
+    position: absolute;
+    height: 180px;
+    width: 180px;
+    bottom: 135px;
+  }
+
   &__logo {
     margin: 0 5px;
     height: 100px;
@@ -26,7 +40,9 @@
   }
 
   &__blurb {
-    margin-bottom: 50px;
+    text-align: justify;
+    padding: 30px 90px;
+    margin-bottom: 150px;
   }
 
   &__enter {

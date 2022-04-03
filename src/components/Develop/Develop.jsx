@@ -27,6 +27,16 @@ const Develop = ({ match }) => {
   const [musicPlay, setMusicPlay] = useState(false);
   const [music, setMusic] = useState(new Audio(tune));
 
+  // SET LOCAL STORAGE HIGH SCORE
+  let score = localStorage.getItem("highScoreDev");
+  if (score === null) {
+    score = 0;
+  } else if (finished && wpm > score) {
+    score = Math.round(wpm);
+  }
+  console.log(score);
+  localStorage.setItem("highScoreDev", score);
+
   //USE EFFECT TO COLLECT INITIAL DATA
   useEffect(() => {
     getStateData();
