@@ -40,6 +40,7 @@ const Code = () => {
               <li className="code__stats-underline">Build time</li>
               <li className="code__stats-underline">Lines of Code</li>
               <li className="code__stats-underline">Animations</li>
+              <li className="code__stats-underline">Images</li>
               <li className="code__stats-underline">Sound Effects</li>
               <li className="code__stats-underline">Fonts</li>
               <li className="code__stats-underline">Components</li>
@@ -53,6 +54,7 @@ const Code = () => {
               <li className="code__stats-underline"> 2 weeks</li>
               <li className="code__stats-underline">28,000</li>
               <li className="code__stats-underline">14</li>
+              <li className="code__stats-underline">25</li>
               <li className="code__stats-underline">3</li>
               <li className="code__stats-underline">4</li>
               <li className="code__stats-underline">30</li>

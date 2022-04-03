@@ -1,3 +1,5 @@
+@use "../../styles/partials/variables" as *;
+
 .code {
   &__container {
     padding: 40px;
@@ -71,7 +73,7 @@
   }
 
   &__stats-underline {
-    border-bottom: 1px dashed lime;
+    border-bottom: 1px dashed $active-orange;
   }
 
   &__visit {
@@ -101,7 +103,7 @@
   }
 
   &__visit-link {
-    color: lime;
+    color: $active-purple;
     margin: 0 5px;
   }
 
@@ -140,7 +142,7 @@
   }
 
   &__link {
-    color: white;
+    color: $active-purple;
   }
 
   &__return {
