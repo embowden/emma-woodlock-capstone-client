@@ -22,6 +22,9 @@ const Modal = ({ close, type }) => {
         <br />
         <br />
         To play again, hit the restart button!
+        <br />
+        <br />
+        To learn more about touch typing, visit the resources tab!
       </p>
     </>
   );
@@ -47,6 +50,9 @@ const Modal = ({ close, type }) => {
         <br />
         <br />
         To play again, hit the restart button!
+        <br />
+        <br />
+        To learn more about touch typing, visit the resources tab!
       </p>
     </>
   );

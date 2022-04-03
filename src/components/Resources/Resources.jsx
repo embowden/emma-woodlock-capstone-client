@@ -1,26 +1,16 @@
 import React from "react";
-// import "./resource.scss";
+import "./resources.scss";
+import Keyboard from "../Widgets/Keyboard/Keyboard";
 
 const Resources = () => {
   return (
-    <section>
-      <div>https://www.youtube.com/watch?v=2VGUGpZFY5s</div>
-      <div>
-        <a href="https://www.freepik.com/vectors/alien-planet">
-          Alien planet vector created by upklyak - www.freepik.com
-        </a>
-      </div>
-      <div>
-        <a href="https://www.freepik.com/vectors/meteor-shower">
-          Meteor shower vector created by vectorpouch - www.freepik.com
-        </a>
-      </div>
-      <p>https://www.npmjs.com/package/lottie-react</p>
-      <p>https://www.npmjs.com/package/darkmode-js</p>
-      <p>https://css-tricks.com/gradient-borders-in-css/</p>
-      <p>https://mixkit.co/free-sound-effects/lose/</p>
-      <p>https://soundcloud.com/dj_yukitaka/8bit_music</p>
-      <p>https://soundcloud.com/retrogamemusic/select-stage-nes</p>
+    <section className="resources">
+      <section className="resources__container">
+        <h1 className="resources__title">{"{ resources }"}</h1>
+        <div className="resources__animation">
+          <Keyboard />
+        </div>
+      </section>
     </section>
   );
 };

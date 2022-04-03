@@ -1,0 +1,149 @@
+.code {
+  &__container {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__animation {
+    height: 50px;
+    width: 50px;
+    margin-bottom: -20px;
+  }
+
+  &__title {
+    font-family: gugi;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    color: white;
+  }
+
+  &__why {
+    margin: 30px 0;
+    padding: 0 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__why-title {
+    color: lime;
+    font-size: 20px;
+  }
+
+  &__why-blurb {
+    color: white;
+    font-family: inconsolata;
+    text-align: justify;
+  }
+
+  &__stats {
+    margin-bottom: 30px;
+    padding: 0 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__stats-title {
+    color: lime;
+    font-size: 20px;
+  }
+
+  &__stats-blurb {
+    color: white;
+    font-family: inconsolata;
+    text-align: justify;
+  }
+
+  &__visit {
+    margin-bottom: 30px;
+    padding: 0 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__visit-title {
+    color: lime;
+    font-size: 20px;
+  }
+
+  &__visit-blurb {
+    color: white;
+    font-family: inconsolata;
+    text-align: justify;
+  }
+
+  &__visit-links {
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+  }
+
+  &__visit-link {
+    color: lime;
+    margin: 0 5px;
+  }
+
+  &__techstack {
+    margin-bottom: 30px;
+  }
+
+  &__techstack-title {
+    color: lime;
+    font-size: 20px;
+    text-align: center;
+  }
+
+  &__logos {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1000px;
+  }
+
+  &__indiv {
+    height: 50px;
+    width: 50px;
+  }
+
+  //   &__credits {
+  //   }
+
+  &__credits-header {
+    font-size: 20px;
+    color: lime;
+  }
+
+  &__credit-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: inconsolata;
+  }
+
+  &__link {
+    color: white;
+  }
+
+  &__return {
+    margin-top: 40px;
+    color: black;
+    padding: 0 20px;
+    background-color: lime;
+    border-radius: 25px;
+  }
+}
+
+.special {
+  width: 100px;
+  height: 40px;
+  background-color: white;
+}
