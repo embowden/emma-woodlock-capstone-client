@@ -38,6 +38,16 @@ const DiscoverHooks = ({ match }) => {
   console.log(score);
   localStorage.setItem("highScoreDisc", score);
 
+  // SET LOCAL STORAGE BEST TIME
+  let best = localStorage.getItem("highSpeedDisc");
+  if (best === null) {
+    best = 0;
+  } else if (finished && secs > best) {
+    best = Math.round(secs);
+  }
+  console.log(best);
+  localStorage.setItem("highSpeedDisc", best);
+
   //USE EFFECT TO COLLECT INITIAL DATA
   useEffect(() => {
     getStateData();

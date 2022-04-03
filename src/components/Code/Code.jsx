@@ -35,14 +35,32 @@ const Code = () => {
         </article>
         <article className="code__stats">
           <h5 className="code__stats-title">Project Stats</h5>
-          <p className="code__stats-blurb">
-            As Web Developers, we spend A LOT of time typing. Typing can be both
-            psychologically and physically exhausting when done for long periods
-            of time. Accordingly, I wanted to make something fun and informative
-            to encourage my peers (and you!) to learn to touch type properly
-            whilst enjoying themselves, in order to reduce mental and physical
-            fatigue.
-          </p>
+          <div className="code__stats-table">
+            <ul className="code__stats-labels">
+              <li className="code__stats-underline">Build time</li>
+              <li className="code__stats-underline">Lines of Code</li>
+              <li className="code__stats-underline">Animations</li>
+              <li className="code__stats-underline">Sound Effects</li>
+              <li className="code__stats-underline">Fonts</li>
+              <li className="code__stats-underline">Components</li>
+              <li className="code__stats-underline">Hooks</li>
+              <li className="code__stats-underline">useEffects</li>
+              <li className="code__stats-underline">
+                Biscuits eaten &nbsp; &nbsp; &nbsp;
+              </li>
+            </ul>
+            <ul className="code__stats-answers">
+              <li className="code__stats-underline"> 2 weeks</li>
+              <li className="code__stats-underline">28,000</li>
+              <li className="code__stats-underline">14</li>
+              <li className="code__stats-underline">3</li>
+              <li className="code__stats-underline">4</li>
+              <li className="code__stats-underline">30</li>
+              <li className="code__stats-underline">hooks</li>
+              <li className="code__stats-underline">8</li>
+              <li className="code__stats-underline">too many </li>
+            </ul>
+          </div>
         </article>
         <article className="code__visit">
           <h5 className="code__visit-title">visit / fork the code</h5>
@@ -90,32 +108,40 @@ const Code = () => {
           <div className="code__credit-links">
             <a
               className="code__link"
+              target="_blank"
               href="https://soundcloud.com/dj_yukitaka/8bit_music"
             >
               Discover Mode Music
             </a>
             <a
               className="code__link"
+              target="_blank"
               href="https://www.freepik.com/vectors/alien-planet"
             >
               Discover Mode Background Image
             </a>
             <a
               className="code__link"
+              target="_blank"
               href="https://soundcloud.com/retrogamemusic/select-stage-nes"
             >
               Develop Mode Music
             </a>
             <a
               className="code__link"
+              target="_blank"
               href="https://www.freepik.com/vectors/meteor-shower"
             >
               Develop Mode Background Image
             </a>
-            <a className="code__link" href="https://mixkit.co">
+            <a className="code__link" target="_blank" href="https://mixkit.co">
               Sound Effects - Mixkit
             </a>
-            <a className="code__link" href="https://lottiefiles.com">
+            <a
+              className="code__link"
+              target="_blank"
+              href="https://lottiefiles.com"
+            >
               Animations - Lottie Files
             </a>
             <a
@@ -124,11 +150,26 @@ const Code = () => {
             >
               Youtube React Tutorial for Touch Typing
             </a>
-            <a className="code__link" href="https://sweetalert2.github.io/">
+            <a
+              className="code__link"
+              target="_blank"
+              href="https://sweetalert2.github.io/"
+            >
               Notifications - SweetAlert
             </a>
-            <a className="code__link" href="https://animate.style/">
+            <a
+              className="code__link"
+              target="_blank"
+              href="https://animate.style/"
+            >
               Text animations - Animate
+            </a>
+            <a
+              className="code__link"
+              target="_blank"
+              href="https://www.flaticon.com/"
+            >
+              SVGs and Icons - FlatIcon
             </a>
           </div>
         </article>

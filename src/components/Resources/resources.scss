@@ -1,13 +1,22 @@
-.resources__title {
-  font-family: gugi;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 48px;
-  color: white;
-}
+.resources {
+  &__container {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-.resources__animation {
-  height: 50px;
-  width: 50px;
+  &__title {
+    font-family: gugi;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    color: white;
+  }
+
+  &__animation {
+    height: 50px;
+    width: 50px;
+  }
 }

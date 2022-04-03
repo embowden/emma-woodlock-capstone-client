@@ -42,13 +42,47 @@
   &__blurb {
     text-align: justify;
     padding: 30px 90px;
-    margin-bottom: 150px;
+    margin-bottom: 120px;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    z-index: 999;
+  }
+
+  &__input {
+    font-family: inherit;
+    text-align: center;
   }
 
   &__enter {
+    margin-top: 10px;
+    font-family: inherit;
     color: black;
     padding: 0 20px;
     background-color: lime;
+    border: 1.5px solid black;
     border-radius: 25px;
+    border: 0;
+
+    &:hover {
+      color: lime;
+      background-color: black;
+      border: 1.5px solid lime;
+    }
+  }
+
+  &__welcome {
+    font-family: press start;
+    margin-bottom: 20px;
+    z-index: 999;
+  }
+
+  &__returning {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 }

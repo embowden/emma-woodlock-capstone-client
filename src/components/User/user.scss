@@ -1,0 +1,63 @@
+.user {
+  &__container {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__title {
+    font-family: gugi;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    color: white;
+  }
+
+  &__animation {
+    height: 100px;
+    width: 100px;
+    margin-bottom: -30px;
+  }
+
+  &__stats {
+    margin-top: 30px;
+    width: 60%;
+  }
+
+  &__score {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  &__icon {
+    margin-right: 50px;
+    height: 40px;
+    width: 40px;
+  }
+
+  &__subtitle {
+    color: white;
+    font-size: 24px;
+    font-family: press start;
+    width: 50%;
+  }
+
+  &__value {
+    color: lime;
+    font-size: 24px;
+    font-family: press start;
+    width: 40%;
+    text-align: right;
+  }
+
+  &__return {
+    margin-top: 30px;
+    color: black;
+    padding: 0 20px;
+    background-color: lime;
+    border-radius: 25px;
+  }
+}

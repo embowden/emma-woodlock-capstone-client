@@ -1,4 +1,3 @@
-// import React from "react";
 import React, { useEffect } from "react";
 import "./animation.scss";
 import Rocket from "../Widgets/Rocket/Rocket";
