@@ -38,6 +38,44 @@ const Develop = ({ match }) => {
   console.log(score);
   localStorage.setItem("highScoreDev", score);
 
+  // SET LOCAL STORAGE BEST TIME
+  let best = localStorage.getItem("highSpeedDev");
+  if (best === null) {
+    best = 0;
+  } else if (finished && secs > best) {
+    best = Math.round(secs);
+  }
+  console.log(best);
+  localStorage.setItem("highSpeedDev", best);
+
+  // SET LOCAL STORAGE GAMES WON
+  let gamesWon = localStorage.getItem("gamesWonDev");
+  const localGamesWon = () => {
+    if (gamesWon === null) {
+      gamesWon = 0;
+    } else gamesWon++;
+    console.log(gamesWon);
+    localStorage.setItem("gamesWonDev", gamesWon);
+  };
+
+  // SET LOCAL STORAGE GAMES LOST
+  let gamesLost = localStorage.getItem("gamesLostDev");
+  const localGamesLost = () => {
+    if (gamesLost === null) {
+      gamesLost = 0;
+    } else gamesLost++;
+    console.log(gamesLost);
+    localStorage.setItem("gamesLostDev", gamesLost);
+  };
+
+  // SET LOCAL STORAGE TOTAL GAMES PLAYED
+  let totalGames = localStorage.getItem("totalGamesDev");
+  if (totalGames === null) {
+    totalGames = 0;
+  } else totalGames = parseInt(gamesWon) + parseInt(gamesLost);
+  console.log(totalGames);
+  localStorage.setItem("totalGamesDev", totalGames);
+
   //USE EFFECT TO COLLECT INITIAL DATA
   useEffect(() => {
     getStateData();
@@ -54,6 +92,7 @@ const Develop = ({ match }) => {
       }, 1000);
       // console.log(started);
       if (secs === 60) {
+        localGamesLost();
         clearInterval(interval);
         setTimeout(() => {
           failMessage();
@@ -86,6 +125,7 @@ const Develop = ({ match }) => {
       (gameMode === 40) & (chars === 200)
     ) {
       winningReset();
+      localGamesWon();
       setTimeout(() => {
         winMessage();
       }, 9000);

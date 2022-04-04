@@ -49,6 +49,34 @@ const DiscoverHooks = ({ match }) => {
   console.log(best);
   localStorage.setItem("highSpeedDisc", best);
 
+  // SET LOCAL STORAGE GAMES WON
+  let gamesWon = localStorage.getItem("gamesWonDisc");
+  const localGamesWon = () => {
+    if (gamesWon === null) {
+      gamesWon = 0;
+    } else gamesWon++;
+    console.log(gamesWon);
+    localStorage.setItem("gamesWonDisc", gamesWon);
+  };
+
+  // SET LOCAL STORAGE GAMES LOST
+  let gamesLost = localStorage.getItem("gamesLostDisc");
+  const localGamesLost = () => {
+    if (gamesLost === null) {
+      gamesLost = 0;
+    } else gamesLost++;
+    console.log(gamesLost);
+    localStorage.setItem("gamesLostDisc", gamesLost);
+  };
+
+  // SET LOCAL STORAGE TOTAL GAMES PLAYED
+  let totalGames = localStorage.getItem("totalGamesDisc");
+  if (totalGames === null) {
+    totalGames = 0;
+  } else totalGames = parseInt(gamesWon) + parseInt(gamesLost);
+  console.log(totalGames);
+  localStorage.setItem("totalGamesDisc", totalGames);
+
   //USE EFFECT TO COLLECT INITIAL DATA
   useEffect(() => {
     getStateData();
@@ -64,6 +92,7 @@ const DiscoverHooks = ({ match }) => {
         setSecs((secs) => secs + 1);
       }, 1000);
       if (secs === 60) {
+        localGamesLost();
         clearInterval(interval);
         setTimeout(() => {
           failMessage();
@@ -96,6 +125,7 @@ const DiscoverHooks = ({ match }) => {
       (gameMode === 100) & (chars === 500)
     ) {
       winningReset();
+      localGamesWon();
       setTimeout(() => {
         winMessage();
       }, 9000);

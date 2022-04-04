@@ -1,3 +1,5 @@
+@use "../../styles/partials/variables" as *;
+
 .intro {
   padding: 0 180px;
 
@@ -84,5 +86,14 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+  }
+
+  &__disclaimer {
+    position: absolute;
+    // top: 78px;
+    right: 5px;
+    bottom: 40px;
+    color: $active-purple;
+    font-size: 10px;
   }
 }

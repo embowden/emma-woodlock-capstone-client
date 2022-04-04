@@ -20,10 +20,12 @@ const Intro = ({ setUser }) => {
     history.push(path);
   };
 
+  //HANDLE NAME INPUT CHANGE
   const handleChange = (event) => {
     setUsername(event.target.value);
   };
 
+  //HANDLE SUBMIT AND VALIDATION
   const handleSubmit = (event) => {
     event.preventDefault();
     if (!username) {
@@ -71,6 +73,17 @@ const Intro = ({ setUser }) => {
   //COLLECT LOCAL STORAGE
   let playerName = localStorage.getItem("username");
 
+  //SET NUMBER OF VISITS IN LOCAL & SESSION STORAGE
+  let visits = Number(localStorage.getItem("visitCount"));
+  let current = Boolean(sessionStorage.getItem("session"));
+
+  if (!current) {
+    visits++;
+  }
+
+  localStorage.setItem("visitCount", visits);
+  sessionStorage.setItem("session", true);
+
   return (
     <section className="intro">
       <section className="intro__container">
@@ -113,6 +126,9 @@ const Intro = ({ setUser }) => {
             </button>
           </div>
         )}
+        <p className="intro__disclaimer">
+          Please set your screen size to 1280 * 720px to enjoy this game!
+        </p>
       </section>
     </section>
   );
