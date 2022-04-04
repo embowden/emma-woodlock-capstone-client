@@ -1,4 +1,5 @@
 import "./App.scss";
+import React, { useEffect, useState } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import Nav from "./components/Navigation/Nav";
 import Intro from "./components/Intro/Intro";
@@ -10,10 +11,18 @@ import Resources from "./components/Resources/Resources";
 import Footer from "./components/Footer/Footer";
 
 function App() {
+  let playerName = localStorage.getItem("username");
+
+  const [user, setUser] = useState("");
+
+  useEffect(() => {
+    setUser(playerName);
+  }, [user]);
+
   return (
     <>
       <div className="wrapper">
-        <Nav />
+        <Nav user={user}/>
         <Switch>
           <Route
             exact

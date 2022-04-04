@@ -11,7 +11,9 @@ const Metrics = ({
   match,
   finished,
   userInput,
+  gameMode,
 }) => {
+  console.log("game speed: ", gameMode);
   return (
     <section className="metrics">
       {finished ? <Score /> : null}
@@ -27,6 +29,8 @@ const Metrics = ({
         <p>{Math.round(wpm)} WPM</p>
         <p>{Math.round(accuracy)}%</p>
         <select
+          defaultValue={`${gameMode.toString()}`}
+          value={`${gameMode.toString()}`}
           className={
             match.path === "/discover"
               ? "metrics__options-discover"

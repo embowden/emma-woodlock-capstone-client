@@ -59,7 +59,7 @@ const Code = () => {
             </ul>
             <ul className="code__stats-answers">
               <li className="code__stats-underline"> 2 weeks</li>
-              <li className="code__stats-underline">28,000</li>
+              <li className="code__stats-underline">3,655</li>
               <li className="code__stats-underline">14</li>
               <li className="code__stats-underline">25</li>
               <li className="code__stats-underline">3</li>

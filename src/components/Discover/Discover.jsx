@@ -109,17 +109,15 @@ const DiscoverHooks = ({ match }) => {
     } else if (!musicPlay) {
       music.pause();
     }
+    return () => {
+      music.pause();
+      console.log("in cleanup");
+    };
   }, [musicPlay]);
 
   //SOUND EFFECTS
   const handleMusic = () => {
-    if (musicPlay === true) {
-      setMusicPlay(false);
-      console.log(musicPlay);
-    } else if (musicPlay === false) {
-      setMusicPlay(true);
-      console.log(musicPlay);
-    }
+    setMusicPlay(!musicPlay);
   };
 
   //FUNCTION TO SET STATES IF WON BEFORE TIMER
@@ -278,6 +276,7 @@ const DiscoverHooks = ({ match }) => {
       />
       <Metrics
         match={match}
+        gameMode={gameMode}
         secs={secs}
         wpm={wpm}
         accuracy={accuracy}

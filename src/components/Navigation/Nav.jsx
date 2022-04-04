@@ -4,15 +4,15 @@ import helmet from "../../assets/images/helmet.svg";
 import successNoise from "../../assets/audio/click-noise.wav";
 import "./nav.scss";
 
-const Nav = () => {
+const Nav = ({ user }) => {
   //COLLECT LOCAL STORAGE
-  let playerName = localStorage.getItem("username");
+  // let playerName = localStorage.getItem("username");
 
-  const [user, setUser] = useState("");
+  // const [user, setUser] = useState("");
 
   useEffect(() => {
-    setUser(playerName);
-  }, [user]);
+    console.log(user);
+  }, user);
 
   //SET MUSIC
   let sucessSound = new Audio(successNoise);
@@ -41,23 +41,14 @@ const Nav = () => {
       >
         RESOURCES
       </NavLink>
-      {!playerName ? (
-        <NavLink
-          onClick={handleSound}
-          to="/user-details"
-          className={(isActive) => "nav__link" + (!isActive ? "" : "--active")}
-        >
-          PROFILE
-        </NavLink>
-      ) : (
-        <NavLink
-          onClick={handleSound}
-          to="/user-details"
-          className={(isActive) => "nav__link" + (!isActive ? "" : "--active")}
-        >
-          {user}
-        </NavLink>
-      )}
+
+      <NavLink
+        onClick={handleSound}
+        to="/user-details"
+        className={(isActive) => "nav__link" + (!isActive ? "" : "--active")}
+      >
+        {user ? user : "Profile"}
+      </NavLink>
     </nav>
   );
 };
