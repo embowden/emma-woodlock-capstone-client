@@ -9,7 +9,7 @@ import successNoise from "../../assets/audio/click-noise.wav";
 import failNoise from "../../assets/audio/error.wav";
 import gameNoise from "../../assets/audio/game-button.wav";
 
-const Intro = () => {
+const Intro = ({ setUser }) => {
   const [username, setUsername] = useState("");
 
   //FUNCTION TO REDIRECT USER
@@ -35,6 +35,7 @@ const Intro = () => {
     } else {
       sucessSound.play();
       localStorage.setItem("username", username);
+      setUser(username);
       routeChange();
     }
   };

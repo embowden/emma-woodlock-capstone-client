@@ -1,6 +1,6 @@
 import "./App.scss";
 import React, { useEffect, useState } from "react";
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import Nav from "./components/Navigation/Nav";
 import Intro from "./components/Intro/Intro";
 import Discover from "./components/Discover/Discover";
@@ -11,23 +11,24 @@ import Resources from "./components/Resources/Resources";
 import Footer from "./components/Footer/Footer";
 
 function App() {
-  let playerName = localStorage.getItem("username");
-
   const [user, setUser] = useState("");
 
   useEffect(() => {
-    setUser(playerName);
+    setUser(localStorage.getItem("username"));
+    console.log(user);
   }, [user]);
 
   return (
     <>
       <div className="wrapper">
-        <Nav user={user}/>
+        <Nav username={user} />
         <Switch>
           <Route
             exact
             path="/"
-            render={(routerProps) => <Intro {...routerProps} />}
+            render={(routerProps) => (
+              <Intro setUser={setUser} {...routerProps} />
+            )}
           />
           <Route
             path="/discover"

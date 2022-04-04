@@ -1,19 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 import helmet from "../../assets/images/helmet.svg";
 import successNoise from "../../assets/audio/click-noise.wav";
 import "./nav.scss";
 
-const Nav = ({ user }) => {
-  //COLLECT LOCAL STORAGE
-  // let playerName = localStorage.getItem("username");
-
-  // const [user, setUser] = useState("");
-
-  useEffect(() => {
-    console.log(user);
-  }, user);
-
+const Nav = ({ username }) => {
   //SET MUSIC
   let sucessSound = new Audio(successNoise);
   const handleSound = () => {
@@ -47,7 +38,7 @@ const Nav = ({ user }) => {
         to="/user-details"
         className={(isActive) => "nav__link" + (!isActive ? "" : "--active")}
       >
-        {user ? user : "Profile"}
+        {username ? username : "Profile"}
       </NavLink>
     </nav>
   );
