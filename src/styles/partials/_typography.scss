@@ -61,6 +61,8 @@ body {
   font-family: bungee;
   cursor: url("../../assets/images/rocket-mouse.png"), auto;
   background-color: black;
+  max-width: 1280px;
+  max-height: 720px;
 }
 
 body::-webkit-scrollbar {
