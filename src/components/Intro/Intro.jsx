@@ -76,11 +76,9 @@ const Intro = ({ setUser }) => {
   //SET NUMBER OF VISITS IN LOCAL & SESSION STORAGE
   let visits = Number(localStorage.getItem("visitCount"));
   let current = Boolean(sessionStorage.getItem("session"));
-
   if (!current) {
     visits++;
   }
-
   localStorage.setItem("visitCount", visits);
   sessionStorage.setItem("session", true);
 

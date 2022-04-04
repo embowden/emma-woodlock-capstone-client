@@ -52,7 +52,7 @@ const Develop = ({ match }) => {
   let gamesWon = localStorage.getItem("gamesWonDev");
   const localGamesWon = () => {
     if (gamesWon === null) {
-      gamesWon = 0;
+      gamesWon = 1;
     } else gamesWon++;
     console.log(gamesWon);
     localStorage.setItem("gamesWonDev", gamesWon);
@@ -62,7 +62,7 @@ const Develop = ({ match }) => {
   let gamesLost = localStorage.getItem("gamesLostDev");
   const localGamesLost = () => {
     if (gamesLost === null) {
-      gamesLost = 0;
+      gamesLost = 1;
     } else gamesLost++;
     console.log(gamesLost);
     localStorage.setItem("gamesLostDev", gamesLost);
@@ -72,7 +72,10 @@ const Develop = ({ match }) => {
   let totalGames = localStorage.getItem("totalGamesDev");
   if (totalGames === null) {
     totalGames = 0;
-  } else totalGames = parseInt(gamesWon) + parseInt(gamesLost);
+  } else
+    totalGames =
+      (gamesWon !== null ? parseInt(gamesWon) : 0) +
+      (gamesLost !== null ? parseInt(gamesLost) : 0);
   console.log(totalGames);
   localStorage.setItem("totalGamesDev", totalGames);
 

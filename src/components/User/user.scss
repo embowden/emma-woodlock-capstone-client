@@ -1,3 +1,5 @@
+@use "../../styles/partials/variables" as *;
+
 .user {
   &__container {
     padding: 40px;
@@ -32,22 +34,50 @@
     margin-bottom: 12px;
   }
 
+  &__score--special {
+    border-top: 1.5px dashed lime;
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    padding-top: 10px;
+  }
+
+  &__spacer {
+    width: 70%;
+  }
+
+  &__discover {
+    color: $active-purple;
+    font-size: 16px;
+    font-family: press start;
+    width: 40%;
+    text-align: right;
+  }
+
+  &__develop {
+    color: $active-orange;
+    font-size: 16px;
+    font-family: press start;
+    width: 40%;
+    text-align: right;
+  }
+
   &__icon {
     margin-right: 50px;
-    height: 40px;
-    width: 40px;
+    height: 30px;
+    width: 30px;
   }
 
   &__subtitle {
     color: white;
-    font-size: 24px;
+    font-size: 16px;
     font-family: press start;
     width: 50%;
   }
 
   &__value {
     color: lime;
-    font-size: 24px;
+    font-size: 16px;
     font-family: press start;
     width: 40%;
     text-align: right;
