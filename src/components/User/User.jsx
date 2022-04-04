@@ -55,7 +55,7 @@ const User = () => {
           <div className="user__score">
             <img src={gamesLost} alt="" className="user__icon" />
             <h4 className="user__subtitle">Games Lost</h4>
-            <p className="user__value">7 WPM</p>
+            <p className="user__value">7</p>
           </div>
           <div className="user__score">
             <img src={totalDays} alt="" className="user__icon" />
