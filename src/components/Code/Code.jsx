@@ -120,6 +120,13 @@ const Code = () => {
             <a
               className="code__link"
               target="_blank"
+              href="https://developer.mozilla.org/en-US/"
+            >
+              MDN - Typing Data
+            </a>
+            <a
+              className="code__link"
+              target="_blank"
               href="https://soundcloud.com/dj_yukitaka/8bit_music"
             >
               Discover Mode Music
