@@ -59,7 +59,7 @@
   }
 
   &__enter {
-    margin-top: 10px;
+    margin-top: 5px;
     font-family: inherit;
     color: black;
     padding: 0 20px;
@@ -90,7 +90,6 @@
 
   &__disclaimer {
     position: absolute;
-    // top: 78px;
     right: 5px;
     bottom: 40px;
     color: $active-purple;
