@@ -16,7 +16,7 @@ const Preview = ({ text, userInput, cont }) => {
         {splitText.map((char, index) => {
           let colour;
           if (index < userInput.length) {
-            colour = char === userInput[index] ? "#42f57e" : "#f54242";
+            colour = char === userInput[index] ? "#17ab49" : "#f54242";
           }
           return (
             <span
