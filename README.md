@@ -7,7 +7,8 @@ Please set your screen size to 1280 * 720px through the dev tools in your browse
 
 ## Game Demo
 
-Please checkout the demo of this game if you'd like to learn more about how to play:\
+Please checkout the demo of this game if you'd like to learn more about how to play:
+
 https://www.loom.com/share/f808c04cfbbf4e52932454ce090a9cb3
 
 ## Available Scripts
